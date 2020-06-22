@@ -1,0 +1,46 @@
+{
+"variables": {
+"iso_url": "ubuntu-20.04-desktop-amd64",
+"non_gui": "false",
+"checksum": "E5B72E9CFE20988991C9CD87BDE43C0B691E3B67B01F76D23F8150615883CE11",
+"hyperv_switchname": "NET_switch"
+},
+"builders": [{
+		"type": "hyperv-iso",
+		"iso_url": "ubuntu-20.04-desktop-amd64.iso",
+		"iso_checksum": "{{ user `checksum` }}",
+		"iso_checksum_type": "md5",
+		"headless": "{{ user `non_gui` }}",
+		"vm_name": "OpenShift",
+		"communicator":"ssh",
+		"ssh_username": "root",
+		"ssh_password": "root",
+		"ssh_port": 22,
+		"guest_additions_mode":"disable",
+		"ssh_timeout": "60000s",
+		"disk_size": "40240",
+		"cpus": "2",
+		"memory": "2048",
+		"generation": 1,
+		"switch_name":"{{user `hyperv_switchname`}}",
+		"enable_secure_boot": false,
+		
+
+
+
+"http_directory": "http",
+"boot_command": [
+"<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg<enter><wait>"
+],
+"shutdown_command": "/sbin/halt -p"
+}
+],
+
+"provisioners": [
+{
+    "type": "shell",
+    "inline": [
+        "sudo apt-get update",
+		]
+  }
+]
