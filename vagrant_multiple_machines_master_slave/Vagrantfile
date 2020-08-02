@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
         host.vm.network "forwarded_port", guest: 22, host: "8080"  #forward ip to machine eg for web server
         host.vm.synced_folder "scripts", "/tmp"
         host.vm.provision "shell", path: "scripts/master-setup.sh"
+        host.vm.provision "shell", path: "scripts/jenkins-install.sh.sh"
       end
     end
 
@@ -42,7 +43,7 @@ end
         host.vm.hostname = "slave-#{i}"
         host.vm.network "private_network", ip: "192.168.60.#{SLAVE_IP_START + i}"
         host.vm.synced_folder "scripts", "/tmp"
-        host.vm.provision "shell", path: "scripts/slave-setup.sh"
+        host.vm.provision "shell", path: "scripts/setup.sh"
       end
     end
 
