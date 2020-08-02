@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
     # Setting up shared directories between hosts and virtual machines
     host.vm.synced_folder "scripts", "/tmp"
 		#provisioning
-		host.vm.provision "shell", path: "scripts/setup.sh"
+    host.vm.provision "shell", path: "scripts/setup.sh"
 
     # VirtaulBox related configuration
         host.vm.provider "virtualbox" do |v|
