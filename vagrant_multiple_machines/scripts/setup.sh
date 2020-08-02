@@ -6,5 +6,6 @@ yum update
 yum upgrade
 adduser przemek
 mkdir /home/przemek/.ssh
+mkdir /root/.ssh
 cat /tmp/id_rsa.pub >> /home/przemek/.ssh/authorized_keys
-cat /tmp/id_rsa.pub >> /home/root/.ssh/authorized_keys
+cat /tmp/id_rsa.pub >> /root/.ssh/authorized_keys
