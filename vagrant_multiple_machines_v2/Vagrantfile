@@ -1,14 +1,13 @@
 NUM_MASTER_NODE = 1
-NUM_SLAVE_NODE = 1
+NUM_WORKER_NODE = 1
 MASTER_IP_START = 10
-SLAVE_IP_START = 20
+WORKER_IP_START = 20
 
 Vagrant.configure("2") do |config|
 
 # Specify the base box
 	   config.vm.box = "centos/7"  #base image for building
      config.vm.box_check_update = true
-     config.vm.hostname = "centos7"
 
 # Provision master nodes
 (1..NUM_MASTER_NODE).each do |i|
@@ -24,25 +23,29 @@ Vagrant.configure("2") do |config|
       #host.vm.network "forwarded_port", guest: 8080, host: 8080  #forward ip to machine eg for web server
       host.vm.synced_folder "../common_scripts", "/tmp"
       host.vm.provision "shell", path: "../common_scripts/setup.sh"
+			host.vm.provision "ansible" do |ansible|
+				ansible.playbook = "../common_scripts/ansible_playbooks/install_os_tools.yaml"
+			end
       end
 end
 
 
 # Provision slave nodes
-(1..NUM_SLAVE_NODE).each do |i|
-    config.vm.define "slave-#{i}" do |host|
+(1..NUM_WORKER_NODE).each do |i|
+    config.vm.define "worker-#{i}" do |host|
       # Name shown in the GUI
       host.vm.provider "virtualbox" do |vb|
-          vb.name = "slave-#{i}"
+          vb.name = "worker-#{i}"
           vb.memory = 2048
           vb.cpus = 1
       end
       host.vm.hostname = "slave-#{i}"
-      host.vm.network "private_network", ip: "192.168.60.#{SLAVE_IP_START + i}"
+      host.vm.network "private_network", ip: "192.168.60.#{WORKER_IP_START + i}"
       host.vm.synced_folder "../common_scripts", "/tmp"
       host.vm.provision "shell", path: "../common_scripts/setup.sh"
+			host.vm.provision "ansible" do |ansible|
+				ansible.playbook = "../common_scripts/ansible_playbooks/install_os_tools.yaml"
+			end
       end
 end
-
-
 end
