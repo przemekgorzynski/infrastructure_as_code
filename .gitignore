@@ -1,0 +1,11 @@
+as
+.vagrant/
+yum-save*
+vagrant-shell
+.font-unix/
+.ICE-unix/
+.Test-unix/
+.X11-unix/
+.XIM-unix/
+tmp*
+vbox*
