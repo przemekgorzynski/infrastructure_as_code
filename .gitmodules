@@ -1,3 +1,0 @@
-[submodule "common_scripts/ansible_playbooks"]
-	path = common_scripts/ansible_playbooks
-	url = https://github.com/przemekgorzynski/ansible_playbooks.git
