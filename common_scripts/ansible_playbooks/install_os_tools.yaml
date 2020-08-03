@@ -1,5 +1,4 @@
----
-  hosts: host1
+- hosts: host1
   vars_files:
     - env_variables
   become: yes
