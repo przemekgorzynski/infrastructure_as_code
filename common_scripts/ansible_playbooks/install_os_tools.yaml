@@ -1,8 +1,8 @@
-- hosts: host1
+- hosts: linux
   vars_files:
     - env_variables
   become: yes
-
+  become_user: root
   tasks:
     - name: install basic tools
       yum:
