@@ -1,0 +1,16 @@
+- hosts: host1
+  become: yes
+  become_user: root
+  tasks:
+    - name: Add nginx repository
+      yum_repository:
+        name: epel
+        description: EPEL YUM repo
+        file: nginx.repo
+        baseurl: http://nginx.org/packages/mainline/centos/7/$basearch/
+        gpgcheck: no
+        enabled: 1
+    - name: install nginx
+      yum:
+        name: nginx
+        state: latest

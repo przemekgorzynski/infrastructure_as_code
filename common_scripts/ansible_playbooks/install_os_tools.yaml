@@ -1,0 +1,11 @@
+---
+  host: host1
+  vars_files:
+    - env_variables
+  become: yes
+
+  tasks:
+    - name: install basic tools
+      yum:
+        name: "{{ os_packages }}"
+        state: latest

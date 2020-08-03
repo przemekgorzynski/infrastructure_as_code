@@ -1,0 +1,2 @@
+host1 ansible_host=192.168.60.11 ansible_connecion=ssh ansible_user=przemek ansible_ssh_private_key_file=/home/przemek/.ssh/id_rsa
+host2 ansible_host=192.168.60.12 ansible_connecion=ssh ansible_user=przemek ansible_ssh_private_key_file=/home/przemek/.ssh/id_rsa
