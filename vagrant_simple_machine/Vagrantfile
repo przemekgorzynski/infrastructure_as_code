@@ -30,7 +30,4 @@ Vagrant.configure("2") do |config|
       ansible.inventory_path = "../common_scripts/ansible_playbooks/inventory"
       ansible.playbook = "../common_scripts/ansible_playbooks/install_os_tools.yaml"
     end
-   config.vm.provision "ansible" do |ansible|
-      ansible.playbook = "../common_scripts/ansible_playbooks/install_nginx.yaml"
-   end
 end
