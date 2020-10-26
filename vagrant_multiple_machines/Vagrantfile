@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
         # Set the name of the virtual machine
         v.name = "host#{i}"
         # Setting the memory size of the virtual machine
-        v.memory = 1400
+        v.memory = 2048
         # Setting CPU Number of Virtual Machines
         v.cpus = 1
     end
