@@ -4,6 +4,7 @@ Vagrant
 1. Install VirtualBox and vagrant
 2. Install VirtualBox extension Pack
 3. Install vagrant plugin ->  vagrant plugin install vagrant-vbguest
+4. Install vagrant disk plugin -> vagrant plugin install vagrant-disksize
 
 
 

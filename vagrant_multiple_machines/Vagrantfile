@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
     host.vm.network "private_network", ip: "192.168.60.#{10+i}"
     # Setting up shared directories between hosts and virtual machines
     host.vm.synced_folder "../common_scripts", "/tmp"
-		#provisioning
+   	#provisioning
     host.vm.provision "shell", path: "../common_scripts/setup.sh"
     host.vm.provision "ansible" do |ansible|
       ansible.inventory_path = "../common_scripts/ansible_playbooks/inventory"
