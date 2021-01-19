@@ -1,6 +1,12 @@
 variable "AWS_ACCESS_KEY" {}
-
 variable "AWS_SECRET_KEY" {}
+
+variable "PRIVATE_KEY_PATH" {
+  default = "/home/przemek/.ssh/id_rsa"
+}
+variable "PUBLIC_KEY_PATH" {
+  default = "/home/przemek/.ssh/id_rsa.pub"
+}
 
 variable "AWS_REGION" {
   default = "eu-west-2"
@@ -8,6 +14,10 @@ variable "AWS_REGION" {
 
 variable "AWS_INSTANCE_TYPE" {
     default = "t2.micro"
+}
+
+variable "INSTANCE_USERNAME" {
+  default = "ubuntu"
 }
 
 variable "AMIS" {
