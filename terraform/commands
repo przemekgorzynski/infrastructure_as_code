@@ -1,4 +1,4 @@
 terraform init          #init project / downloads provider add-on
 terraform plan          #run config without changes - dry-run
-terafform aply          #apply configuration
+terafform apply          #apply configuration
 terraform destroy       #destroy vm from config
