@@ -9,7 +9,7 @@ resource "aws_instance" "example" {
   key_name = aws_key_pair.przemek.key_name
 
   provisioner "local-exec" {
-    command = " echo ${aws_instance.example.public_ip} >> aws_inventory_ips.txt"
+    command = " echo ${aws_instance.example.public_ip} ${aws_instance.example.id} >> aws_inventory_ips.txt"
   }
 
   provisioner "file" {
