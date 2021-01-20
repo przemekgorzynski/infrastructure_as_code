@@ -9,3 +9,9 @@ vagrant-shell
 .XIM-unix/
 tmp*
 vbox*
+access.tfvars
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars
+aws_inventory_ips.txt

@@ -1,0 +1,413 @@
+[33mcommit 829e353a00d6d0800dcc95f376dd396dbac03f8f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Przemyslaw Gorzynski <przemyslaw.gorzynski@protonmail.com>
+Date:   Wed Jan 20 14:04:43 2021 +0100
+
+    update configuration
+
+[33mcommit 7f751f195f1b8f2677b17049f20a6141e86c1721[m
+Author: Przemyslaw Gorzynski <przemyslaw.gorzynski@protonmail.com>
+Date:   Tue Jan 19 18:20:58 2021 +0100
+
+    terraform
+
+[33mcommit f55698029464bc162e6939896d5d11edbbdc9ff1[m
+Author: Przemyslaw Gorzynski <przemyslaw.gorzynski@protonmail.com>
+Date:   Tue Jan 19 16:47:39 2021 +0100
+
+    terraform config update
+
+[33mcommit ec1cf15b36390edc13bfa3ce9185bdff641f03b2[m
+Author: Przemyslaw Gorzynski <przemyslaw.gorzynski@protonmail.com>
+Date:   Tue Jan 19 14:09:06 2021 +0100
+
+    update keys
+
+[33mcommit 8c5e1ce57f61c0ef2c7abfb8cfea2e03401a0128[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Tue Nov 3 09:59:10 2020 +0100
+
+    update configuration
+
+[33mcommit 5b2decd16aaf7b66e8f014c88853ff7adbe44404[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Oct 26 19:01:32 2020 +0100
+
+    update configuration
+
+[33mcommit f84d8a83a2198f471bd2db79032ec067dd0fac31[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Oct 15 21:23:23 2020 +0200
+
+    Update Vagrant simple machine config
+
+[33mcommit ce63e7f7ba78098395d7e91cf45e5dd4632fed2b[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Oct 15 21:06:15 2020 +0200
+
+    terraform config
+
+[33mcommit b142f6da2c262d209d870f52471118a883f563fd[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Oct 15 20:43:02 2020 +0200
+
+    terraform t2micro instance
+
+[33mcommit 92442efef34b8d4a9faafc04b8902db122a69ddf[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Sep 10 14:16:34 2020 +0200
+
+    delete user configuration
+
+[33mcommit 65ddfdaa003ed256d5f274fce1447e6135b83bf6[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Aug 27 19:42:41 2020 +0200
+
+    update configuration
+
+[33mcommit 0a42177b0338585456ce5a5271ceedf14d85503c[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Thu Aug 27 19:31:28 2020 +0200
+
+    configuration
+
+[33mcommit 700dde8562683e169d10968447e898fa5e869335[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 10 14:59:08 2020 +0200
+
+    change memory value
+
+[33mcommit 8b8b7be31dd1598c27d36c9fd5ab17d3f6e3dd81[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 20:11:26 2020 +0200
+
+    update configuration
+
+[33mcommit df7df7852d449e14bceaa67b4453ecfab3b4fa04[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 20:10:03 2020 +0200
+
+    update ansible configuration
+
+[33mcommit 1fdbc2f7ef511fd354b77101f8ef45ca8bd3fd89[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 16:57:34 2020 +0200
+
+    add ansible configuration
+
+[33mcommit b37a28bc4522015cd706627aa51706bd5e295963[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:35:42 2020 +0200
+
+    update config
+
+[33mcommit 27d8dfa30d041b9c882591d709a8fb014c369c83[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:15:33 2020 +0200
+
+    .
+
+[33mcommit 9787fe8a6ce24d29b1fa8f1c0fdb9d5446a1be64[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:14:52 2020 +0200
+
+    update REAMDE
+
+[33mcommit 40dd01ae9494a3ac8bd075652f61e22c973ded41[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:14:18 2020 +0200
+
+    .
+
+[33mcommit 04c7bf135ee0f03cea7904fdedd7615e0d5ffeb4[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:13:59 2020 +0200
+
+    update readme
+
+[33mcommit cb34ce441e747fd43b557a4551960234b357318e[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:13:04 2020 +0200
+
+    update configuration
+
+[33mcommit 401b070a38b9d7085a5f39964800b1aecf1befda[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:12:05 2020 +0200
+
+    ansible provisioning files
+
+[33mcommit 1e899837c3ced41f72d3fa1afd5909e92aaae5c7[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:11:55 2020 +0200
+
+    create .gitignore file
+
+[33mcommit 479a7c2b3ab45c882eb9b0b388c40075a49dd0df[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:11:44 2020 +0200
+
+    add ansible provisining section
+
+[33mcommit 967be83cff31ffab466dd860eb75bce2aee81ab8[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 15:11:30 2020 +0200
+
+    update readme
+
+[33mcommit 619113091ba887272f4062e725a9604fa4b06165[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 13:40:30 2020 +0200
+
+    Removed submodule
+
+[33mcommit ab0265fc354bc72b0b0f1f1f11a81e1b252312c7[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 13:40:01 2020 +0200
+
+    Removed submodule
+
+[33mcommit d75cfe93fdc8cb54ce476c904d30304c2d68550f[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 13:18:04 2020 +0200
+
+    add ansible submodule
+
+[33mcommit 3aea90d92e1a7ed1fab2ed587bd6e75cd2b72781[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 11:36:27 2020 +0200
+
+    delete file
+
+[33mcommit b76a377a246eeca8cea036ec57ce5e72040da89d[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 11:35:23 2020 +0200
+
+    update basic configuration
+
+[33mcommit ee9593da2a8b2eba3b4d4810e97528ee2d22d6f1[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Mon Aug 3 10:55:04 2020 +0200
+
+    update
+
+[33mcommit d48795f538f0f319300a40c4d8f4f487f42276b0[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Sun Aug 2 23:33:44 2020 +0200
+
+    Update Vagrantfile
+
+[33mcommit dd14acb737dba93c6db3c492e87906795f7a3b42[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 23:32:06 2020 +0200
+
+    update config
+
+[33mcommit 62df30240a0cf614db1340035556d8e20236002a[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 23:30:07 2020 +0200
+
+    update configuration
+
+[33mcommit 39ad5dced8564091a2060bb36f1a315877a33bf6[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 23:18:34 2020 +0200
+
+    update configuration
+
+[33mcommit 45c51f48026f0e2acc0b9e0c0e7c1295d99b43c3[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 23:15:52 2020 +0200
+
+    update configuration
+
+[33mcommit 6c5bc9cf352b0685e9534d1935a41c60bca76048[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 22:57:35 2020 +0200
+
+    update configuration
+
+[33mcommit 4447fe511a2ab7f42fe5998390d59cb4d142cdca[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 22:18:48 2020 +0200
+
+    Install Jenkins
+
+[33mcommit 8d07090e3cc89ac61f87a7b9321b3943121b33ac[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 22:18:35 2020 +0200
+
+    correct Vagrantfile
+
+[33mcommit 7b391f2a59811ae03138b0c41cd561feb0112512[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:38:47 2020 +0200
+
+    update configuration
+
+[33mcommit 12eaf3edcfe0bf56caf3c258415e60793d496681[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:34:36 2020 +0200
+
+    update configuration
+
+[33mcommit 4d89ae0bcb1898c726be1f5e7bc25a1651ee5a0d[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:32:42 2020 +0200
+
+    update basic configuration file
+
+[33mcommit 039e4731748d1c9d0ff7174a0ce8b571c0298bfa[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:32:24 2020 +0200
+
+    remove file
+
+[33mcommit b3014de8cd99b39bc79d4bbc85f251c23170e892[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:32:15 2020 +0200
+
+    remove file
+
+[33mcommit ab17a9ffd0ac471ae825ad598a2a133952150e46[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:32:02 2020 +0200
+
+    Jenkins installation
+
+[33mcommit 0551b4c1e1a39dc2d66bdba2704c931a23044825[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:28:11 2020 +0200
+
+    new configuration for multiple machines
+
+[33mcommit 5341b22fb432638d8be104fb7e88897a05e98b81[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 21:27:45 2020 +0200
+
+    update readme
+
+[33mcommit 124cd40abc3606866646e327daa076decba33bc6[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 20:56:03 2020 +0200
+
+    configure
+
+[33mcommit 0add3e53c3f87d802ae77391d026cb8b54747e8c[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 20:14:58 2020 +0200
+
+    update script
+
+[33mcommit 30b854aea34febaab5ace37ecc79b672b2e78b89[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 19:54:28 2020 +0200
+
+    add python installation
+
+[33mcommit b0f61074cf574612913f59d3325aea79497e7447[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 19:24:27 2020 +0200
+
+    add sudo
+
+[33mcommit 856626f1768a95ee2a849d17cc1e1a0a91888c15[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 19:23:54 2020 +0200
+
+    add sudo
+
+[33mcommit 8b802302a1192a78ea5c3b7a21633db76aef3e3e[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 19:11:37 2020 +0200
+
+    add root account ssh
+
+[33mcommit b0a41feafbc6c1f9414943dd2bf20bc166668d95[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 18:05:58 2020 +0200
+
+    add keys to root account
+
+[33mcommit 351ce8236e264d8ee7b029fd77ec157b12b5b9aa[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 17:25:35 2020 +0200
+
+    add ssh login to non-vagrant user
+
+[33mcommit 8f375bbeb7d258562afdc95d6418cd709b5aa8fb[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 17:24:47 2020 +0200
+
+    add ssh login to non-vagrant user
+
+[33mcommit 220a421f1e3082fd3a115caa564b83be3c748490[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 17:21:47 2020 +0200
+
+    public ssh key to login vagrant boxes
+
+[33mcommit c9f4f17689fa98ed2692f386b536b2e55cb243df[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 17:21:10 2020 +0200
+
+    update script file
+
+[33mcommit b25983fb4daa39330c5e246aa6da31dd306ac36f[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 17:20:43 2020 +0200
+
+    add ssh login to non-vagrant user
+
+[33mcommit 01cb4b5b3b6f4746ce1d4e79edb50b1ac763a675[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sun Aug 2 14:07:40 2020 +0200
+
+    vagrant file for multiple machines
+
+[33mcommit a2f73db2e2f68038944d7dc52a158053875af66e[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Tue Jul 28 17:02:00 2020 +0200
+
+    update hostname
+
+[33mcommit b6e134f30e50c520a2268d8cf8fdfada532abb78[m
+Author: Przemek G <PrzemekG@gmail>
+Date:   Sat Jul 25 01:05:38 2020 +0200
+
+    vagrant simple machine
+
+[33mcommit b3519ab69b11115d530feabfcbe72fcaa37ed14c[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Sat Jul 25 01:02:45 2020 +0200
+
+    Update README.md
+
+[33mcommit f34ff8d231a58cc99903554a7cf1c712b256e31a[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Sat Jul 25 00:59:50 2020 +0200
+
+    Delete packer-centos-hyper_v.json
+
+[33mcommit 4bbc45efb9ed619ef7c8a981c97dcd64907df00c[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Tue Jun 23 21:54:47 2020 +0200
+
+    Update and rename packer-ubuntu-hyper_v.json to packer-centos-hyper_v.json
+
+[33mcommit e7755644ce7751805736062f38707f36b1916c36[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Tue Jun 23 21:23:01 2020 +0200
+
+    Update packer-ubuntu-hyper_v.json
+
+[33mcommit d160999269e001dbbb91ad731f46c7ecc673458a[m
+Author: przemekgorzynski <43602911+przemekgorzynski@users.noreply.github.com>
+Date:   Mon Jun 22 15:27:05 2020 +0200
+
+    Create packer-ubuntu-hyper_v.json
+
+[33mcommit e3e0c780bb4d166e7f9b314b8444e7a4a8a10fab[m
+Author: Your Name <you@example.com>
+Date:   Mon Jun 22 12:38:04 2020 +0200
+
+    first commit

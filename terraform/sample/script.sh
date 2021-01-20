@@ -1,1 +1,0 @@
-touch /tmp/proven_script.txt
