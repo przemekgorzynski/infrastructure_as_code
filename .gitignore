@@ -16,3 +16,4 @@ terraform.tfstate.backup
 terraform.tfvars
 aws_inventory_ips.txt
 .terraform.tfstate.lock.info
+.terraform*
