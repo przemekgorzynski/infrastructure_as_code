@@ -12,7 +12,7 @@ variable "azure_subscription_id" {
 }
 
 variable "service_principal_password" {
-     default =  "XXX"
+     default =  ""
 }
 
 # General
@@ -22,10 +22,10 @@ variable "azure_region" {
 
 # Resource group
 variable "prod_rg_name" {
-    default = "prod_resource_group"
+    default = "resource_group_prod"
 }
 variable "bastion_rg_name" {
-    default = "bastion_resource_group"
+    default = "resource_group_bastion"
 }
 
 # VNET
@@ -34,4 +34,38 @@ variable "prod_vnet_name" {
 }
 variable "bastion_vnet_name" {
     default = "vnet_bastion"
+}
+
+variable "prod_subnet_name" {
+    default = "vnet_prod_subnet"
+}
+variable "bastion_subnet_name" {
+    default = "vnet_bastion_subnet"
+}
+
+variable "vnet_address_spaces" {
+  type = map(string)
+  default = {
+    vnet_prod = "10.0.0.0/16"
+    vnet_bastion = "10.100.0.0/16"
+  }
+}
+
+variable "subnet_address_spaces" {
+  type = map(string)
+  default = {
+    vnet_prod_subnet = "10.0.0.0/24"
+    vnet_bastion_subnet = "10.100.0.0/24"
+  }
+}
+
+# Availibility set
+variable "prod_availibility_set" {
+    default = "availibility_set_prod"
+}
+variable "update_domain" {
+    default = 5
+}
+variable "fault_domain" {
+    default = 3
 }
