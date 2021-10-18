@@ -12,7 +12,7 @@ variable "azure_subscription_id" {
 }
 
 variable "service_principal_password" {
-     default =  ""
+     default =  "XXX"
 }
 
 # General
