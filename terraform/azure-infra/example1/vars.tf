@@ -59,6 +59,17 @@ variable "subnet_address_spaces" {
   }
 }
 
+# NIC
+variable "nic-vm01-prod" {
+    default = "10.0.0.4"
+}
+variable "nic-vm02-prod" {
+    default = "10.0.0.5"
+}
+variable "nic-vm01-bastion" {
+    default = "10.100.0.4"
+}
+
 # Availibility set
 variable "prod_availibility_set" {
     default = "availibility_set_prod"

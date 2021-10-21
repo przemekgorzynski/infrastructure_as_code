@@ -21,8 +21,19 @@ resource "azurerm_network_security_group" "nsg_prod" {
     access                     = "Allow"
     protocol                   = "TCP"
     source_port_range          = "*"
-    destination_port_range     = "80"
-    source_address_prefix      = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = var.vnet_address_spaces[var.bastion_vnet_name]
+    destination_address_prefix = var.subnet_address_spaces[var.prod_subnet_name]
+  }
+  security_rule {
+    name                       = "LoadBalancerAllow"
+    priority                   = 4000
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    source_address_prefix      = "AzureLoadBalancer"
+    destination_port_range     = "*"
     destination_address_prefix = var.subnet_address_spaces[var.prod_subnet_name]
   }
   security_rule {
