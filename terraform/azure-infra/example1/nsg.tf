@@ -21,9 +21,8 @@ resource "azurerm_network_security_group" "nsg_prod" {
     access                     = "Allow"
     protocol                   = "TCP"
     source_port_range          = "*"
-    destination_port_range     = "22"
-    source_address_prefix      = var.vnet_address_spaces[var.bastion_vnet_name]
-    destination_address_prefix = var.subnet_address_spaces[var.prod_subnet_name]
+    destination_port_range     = "80"
+    source_address_prefix      = "Internet"
   }
   security_rule {
     name                       = "LoadBalancerAllow"
