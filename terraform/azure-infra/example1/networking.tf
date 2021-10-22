@@ -40,3 +40,12 @@ resource "azurerm_virtual_network_peering" "vnet_bastion-2-vnet_prod" {
   virtual_network_name      = azurerm_virtual_network.vnet_bastion.name
   remote_virtual_network_id = azurerm_virtual_network.vnet_prod.id
 }
+
+# Public IP for bastion
+resource "azurerm_public_ip" "pip-bastion" {
+  name                = var.pip-bastion-name
+  resource_group_name = azurerm_resource_group.rg_bastion.name
+  location            = azurerm_resource_group.rg_bastion.location
+  allocation_method   = "Dynamic"
+  idle_timeout_in_minutes = 10
+}

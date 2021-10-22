@@ -1,11 +1,11 @@
-output "vm01-prod-IP" {
-    value = azurerm_network_interface.nic-vm01-prod.private_ip_address
+output "ssh_keys" { 
+    value = tls_private_key.ssh_login_key.private_key_pem
 }
 
-output "vm02-prod-IP" {
-    value = azurerm_network_interface.nic-vm02-prod.private_ip_address
+output "Admin_user" {
+    value = var.vm-username
 }
 
-output "vm01-bastion-IP" {
-    value = azurerm_network_interface.nic-vm01-bastion.private_ip_address
-} 
+output "Bastion_IP" {
+    value = azurerm_linux_virtual_machine.bastion.public_ip_address
+}

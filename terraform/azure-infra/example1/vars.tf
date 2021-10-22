@@ -59,6 +59,10 @@ variable "subnet_address_spaces" {
   }
 }
 
+variable "pip-bastion-name" {    # Public IP name for bsation host
+    default = "bastion-pip"
+}
+
 # NIC
 variable "nic-vm01-prod" {
     default = "10.0.0.4"
@@ -79,4 +83,31 @@ variable "update_domain" {
 }
 variable "fault_domain" {
     default = 3
+}
+
+# VMs
+variable "vms-prod" {
+    type    = list(string)
+    default = ["vm01-prod", "vm02-prod"]
+}
+
+variable "vms-bastion" {
+    default = "vm01-bastion"
+}
+
+variable "vm-username" {
+    default = "admuser"
+}
+
+variable "username-password" {
+    default = "YourPassword"
+}
+
+# Sufix
+variable "nic_sufix" {
+    default = "-nic"
+}
+
+variable "os_disk_sufix" {
+    default = "-os"
 }
