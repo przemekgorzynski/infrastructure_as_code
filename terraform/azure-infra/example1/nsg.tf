@@ -23,6 +23,7 @@ resource "azurerm_network_security_group" "nsg_prod" {
     source_port_range          = "*"
     destination_port_range     = "80"
     source_address_prefix      = "Internet"
+    destination_address_prefix = "*"
   }
   security_rule {
     name                       = "LoadBalancerAllow"
@@ -33,7 +34,7 @@ resource "azurerm_network_security_group" "nsg_prod" {
     source_port_range          = "*"
     source_address_prefix      = "AzureLoadBalancer"
     destination_port_range     = "*"
-    destination_address_prefix = var.subnet_address_spaces[var.prod_subnet_name]
+    destination_address_prefix = "*"
   }
   security_rule {
     name                       = "BlockAll"

@@ -100,7 +100,7 @@ variable "vm-username" {
 }
 
 variable "username-password" {
-    default = "YourPassword"
+    default = "YourPassword1"
 }
 
 # Sufix
