@@ -9,3 +9,7 @@ output "Admin_user" {
 output "Bastion_IP" {
     value = azurerm_linux_virtual_machine.bastion.public_ip_address
 }
+
+output "LB_IP" {
+    value = azurerm_lb.prod_lb.public_ip_address.frontend_ip_configuration.public_ip_address
+}

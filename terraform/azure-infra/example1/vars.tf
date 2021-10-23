@@ -63,6 +63,10 @@ variable "pip-bastion-name" {    # Public IP name for bsation host
     default = "bastion-pip"
 }
 
+variable "pip-loadbalancer-name" {    # Public IP name for load balancer
+    default = "loadbalancer-pip"
+}
+
 # NIC
 variable "nic-vm01-prod" {
     default = "10.0.0.4"
@@ -110,4 +114,9 @@ variable "nic_sufix" {
 
 variable "os_disk_sufix" {
     default = "-os"
+}
+
+# Load balancer
+variable "loadbalancer-name" {
+    default = "lb-prod"
 }

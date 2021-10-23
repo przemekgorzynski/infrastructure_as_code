@@ -49,3 +49,12 @@ resource "azurerm_public_ip" "pip-bastion" {
   allocation_method   = "Dynamic"
   idle_timeout_in_minutes = 10
 }
+
+# Public IP for load Balancer
+resource "azurerm_public_ip" "pip-loadbalancer" {
+  name                = var.pip-loadbalancer-name
+  resource_group_name = azurerm_resource_group.rg_prod.name
+  location            = azurerm_resource_group.rg_prod.location
+  allocation_method   = "Dynamic"
+  idle_timeout_in_minutes = 10
+}

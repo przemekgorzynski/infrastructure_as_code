@@ -34,6 +34,7 @@ resource "azurerm_linux_virtual_machine" "vms-prod" {
     location              = var.azure_region
     resource_group_name   = azurerm_resource_group.rg_prod.name
     network_interface_ids = [azurerm_network_interface.nic-prod[each.key].id]
+    availability_set_id   = azurerm_availability_set.availibility_set_prod.id
     size                  = "Standard_B1ls"
     
     os_disk {
@@ -53,4 +54,21 @@ resource "azurerm_linux_virtual_machine" "vms-prod" {
     admin_username = var.vm-username
     admin_password = var.username-password
     disable_password_authentication = false
+
+#    provisioner "file" {
+#    inline = [
+#        "sudo apt update",
+#        "sudo apt install apache2 -y",
+#        "echo "Hosted on ${each.value}" | sudo tee /var/www/html/index.html",
+#        "systemctl restart apache2",
+#    ]
+#        connection {
+#            type        = "ssh"
+#            host        = azurerm_linux_virtual_machine.vms-prod[each.key].private_ip_address
+#            #host        = "vm01-prod"
+#            user        = var.vm-username
+#            password    = var.username-password
+#        }
+#    }
 }
+
