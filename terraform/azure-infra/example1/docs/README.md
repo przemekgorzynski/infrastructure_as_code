@@ -14,3 +14,7 @@ Network rules"
     * Http traffic from Azure Load balancer
 
 ![alt test]( https://github.com/przemekgorzynski/infrastructure_as_code/blob/master/terraform/azure-infra/example1/docs/Azure.png )
+
+
+- 2DO
+    * Automate deploying apache on prod servers 
