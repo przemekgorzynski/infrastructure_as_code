@@ -1,4 +1,4 @@
-output "ssh_keys" { 
+output "SSH_keys" { 
     value = tls_private_key.ssh_login_key.private_key_pem
 }
 
@@ -11,5 +11,9 @@ output "Bastion_IP" {
 }
 
 output "LB_IP" {
-    value = azurerm_lb.prod_lb.public_ip_address.frontend_ip_configuration.public_ip_address
+    value = azurerm_public_ip.pip-loadbalancer.ip_address
+}
+
+output "Admin_user_password" {
+    value = var.username-password
 }
