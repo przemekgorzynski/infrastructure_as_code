@@ -26,6 +26,25 @@ resource "azurerm_linux_virtual_machine" "bastion" {
         username       = var.vm-username
         public_key     = tls_private_key.ssh_login_key.public_key_openssh
     }
+
+    depends_on = [
+      azurerm_linux_virtual_machine.vms-prod,
+      tls_private_key.ssh_login_key
+    ]
+
+    #provisioner "remote-exec" {
+    #inline = [
+    #    "sudo apt update",
+    #    "sudo apt install sshpass",
+    #    #"ssh -p ${var.username-password} ssh ${var.vm-username}@10.0.0.4 \"sudo apt update && sudo apt install apache2 -y && sudo systemctl restart apache2\" ",
+    #]
+    #connection {
+    #    type        = "ssh"
+    #    host        = self.public_ip_address
+    #    user        = var.vm-username
+    #    private_key = tls_private_key.ssh_login_key.private_key_pem
+    #}
+    #}
 }
 
 resource "azurerm_linux_virtual_machine" "vms-prod" {
@@ -54,21 +73,5 @@ resource "azurerm_linux_virtual_machine" "vms-prod" {
     admin_username = var.vm-username
     admin_password = var.username-password
     disable_password_authentication = false
-
-#    provisioner "file" {
-#    inline = [
-#        "sudo apt update",
-#        "sudo apt install apache2 -y",
-#        "echo "Hosted on ${each.value}" | sudo tee /var/www/html/index.html",
-#        "systemctl restart apache2",
-#    ]
-#        connection {
-#            type        = "ssh"
-#            host        = azurerm_linux_virtual_machine.vms-prod[each.key].private_ip_address
-#            #host        = "vm01-prod"
-#            user        = var.vm-username
-#            password    = var.username-password
-#        }
-#    }
 }
 

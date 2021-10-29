@@ -1,7 +1,3 @@
-output "SSH_keys" { 
-    value = tls_private_key.ssh_login_key.private_key_pem
-}
-
 output "Admin_user" {
     value = var.vm-username
 }

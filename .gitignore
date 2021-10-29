@@ -17,3 +17,5 @@ terraform.tfvars
 aws_inventory_ips.txt
 .terraform.tfstate.lock.info
 .terraform*
+id_rsa
+id_rsa.pub
