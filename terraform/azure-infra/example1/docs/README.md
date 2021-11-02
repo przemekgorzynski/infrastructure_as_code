@@ -5,7 +5,7 @@ Infrastructure overview:
 - On prod VMs apache in installed with custom webpage
 - Load balancer passess traffic to one of prod VMs
 
-Network rules"
+Network rules:
 - All trafic to Bastion VM is blocked except ssh on port 22
 - Only following traffic is allowed to prod subnet:
     * On port 22 from bastion subnet
@@ -27,9 +27,11 @@ Execution:
 * terraform apply
 
 At the end of deployment following data are returned in console:
-Admin_user = "admuser"
-Admin_user_password = Login Password for admin declared in vars.tf file
-Bastion_IP = "40.68.13.4"
-LB_IP = "40.114.253.194"
+
+    Admin_user = "admuser"
+    Admin_user_password = Login Password for admin declared in vars.tf file
+    Bastion_IP = "40.68.13.4"
+    LB_IP = "40.114.253.194"
 
 Go to Loab balancer IP address and webpage is displayed.
+![alt test]( https://github.com/przemekgorzynski/infrastructure_as_code/blob/master/terraform/azure-infra/example1/docs/webpage.png )
