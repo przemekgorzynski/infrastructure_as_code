@@ -19,3 +19,4 @@ aws_inventory_ips.txt
 .terraform*
 id_rsa
 id_rsa.pub
+provider_credentials.tf
