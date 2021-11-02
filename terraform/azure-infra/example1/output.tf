@@ -7,7 +7,7 @@ output "Bastion_IP" {
 }
 
 output "LB_IP" {
-    value = azurerm_public_ip.pip-loadbalancer.ip_address
+    value = azurerm_public_ip.pip-loadbalancer
 }
 
 output "Admin_user_password" {

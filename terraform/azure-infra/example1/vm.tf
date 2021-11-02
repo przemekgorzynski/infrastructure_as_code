@@ -12,10 +12,10 @@ resource "azurerm_linux_virtual_machine" "bastion" {
     }
 
     source_image_reference {
-        publisher = "Canonical"
-        offer     = "UbuntuServer"
-        sku       = "18.04-LTS"
-        version   = "latest"
+        publisher = var.os-publisher
+        offer     = var.os-offer
+        sku       = var.os-sku
+        version   = var.os-version
     }
 
     computer_name  = var.vms-bastion
@@ -32,19 +32,23 @@ resource "azurerm_linux_virtual_machine" "bastion" {
       tls_private_key.ssh_login_key
     ]
 
-    #provisioner "remote-exec" {
-    #inline = [
-    #    "sudo apt update",
-    #    "sudo apt install sshpass",
-    #    #"ssh -p ${var.username-password} ssh ${var.vm-username}@10.0.0.4 \"sudo apt update && sudo apt install apache2 -y && sudo systemctl restart apache2\" ",
-    #]
-    #connection {
-    #    type        = "ssh"
-    #    host        = self.public_ip_address
-    #    user        = var.vm-username
-    #    private_key = tls_private_key.ssh_login_key.private_key_pem
-    #}
-    #}
+    provisioner "remote-exec" {
+       inline = [
+           "sudo apt update",
+           "sudo apt upgrade -y",
+           "sudo apt install sshpass",
+           "sshpass -p \"YourPassword1\" ssh -o \"StrictHostKeyChecking=no\" admuser@10.160.0.4 \"sudo apt update && sudo apt upgrade -y && sudo apt install -y apache2 && echo \"Hosted on VM01-prod\" | sudo tee /var/www/html/index.html && sudo systemctl restart apache2\"",
+           "sshpass -p \"YourPassword1\" ssh -o \"StrictHostKeyChecking=no\" admuser@10.160.0.5 \"sudo apt update && sudo apt upgrade -y && sudo apt install -y apache2 && echo \"Hosted on VM02-prod\" | sudo tee /var/www/html/index.html && sudo systemctl restart apache2\"",
+       ]
+       connection {
+           type        = "ssh"
+           port        = "22"
+           agent       = false
+           host        = self.public_ip_address
+           user        = var.vm-username
+           private_key = tls_private_key.ssh_login_key.private_key_pem
+       }
+    }
 }
 
 resource "azurerm_linux_virtual_machine" "vms-prod" {
@@ -63,10 +67,10 @@ resource "azurerm_linux_virtual_machine" "vms-prod" {
     }
 
     source_image_reference {
-        publisher = "Canonical"
-        offer     = "UbuntuServer"
-        sku       = "18.04-LTS"
-        version   = "latest"
+        publisher = var.os-publisher
+        offer     = var.os-offer
+        sku       = var.os-sku
+        version   = var.os-version
     }
 
     computer_name  = each.value
