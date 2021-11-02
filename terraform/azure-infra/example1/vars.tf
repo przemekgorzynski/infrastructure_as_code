@@ -1,20 +1,3 @@
-# Authorization
-# Generate with: az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
-variable "service_principal_appid" { 
-    default =  "f58d7989-8d04-4baf-ae78-5e596f38e4e7"
-}
-
-variable "azure_subscription_tenant_id" {
-     default =  "386c08c3-f8bb-4146-a23b-ed825e141a2d"
-}
-variable "azure_subscription_id" {
-     default =  "4fdf59e6-c21f-4086-9aa6-33808e10ce74"
-}
-
-variable "service_principal_password" {
-     default =  "XXX"
-}
-
 # General
 variable "azure_region" { 
     default = "West Europe"
