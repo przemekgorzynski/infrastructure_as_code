@@ -23,14 +23,10 @@ stages :
       pool:
         vmImage: '${{ parameters.image }}'
       steps:
-      - script: |
-          sudo apt upgrade -y
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt install -y terraform
-          terraform providers
-          terraform --version
-        displayName: Install Terraform
+      - task: TerraformInstaller@0
+        displayName: 'install'
+        inputs:
+          terraformVersion: '0.12.3'
     - job: Init_Provider
       steps:
       - task: TerraformTaskV2@2
