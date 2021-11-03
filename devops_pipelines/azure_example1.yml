@@ -46,3 +46,4 @@ stages :
           provider: 'azurerm'
           command: 'plan'
           environmentServiceNameAzureRM: 'WSBAzureSP'
+          workingDirectory: '$(System.DefaultWorkingDirectory)'
