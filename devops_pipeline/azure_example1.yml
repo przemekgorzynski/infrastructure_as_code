@@ -1,3 +1,11 @@
+parameters:
+- name: image
+  displayName: Pool Image
+  type: string
+  default: ubuntu-latest
+  values:
+  - ubuntu-latest
+
 trigger:
   batch: false
   branches:
@@ -7,14 +15,13 @@ trigger:
     include:
     - /terraform/azure-infra/example1/
 
-pool:
-  vmImage: ubuntu-latest
-
 stages :
-  - stage: validate
+  - stage: Validation
     jobs:
     - job: validate
       continueOnError: false
+      pool:
+        vmImage: '${{ parameters.image }}'
       steps:
       - task: TerraformInstaller@0
         displayName: 'install'
