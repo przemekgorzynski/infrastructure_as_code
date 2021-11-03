@@ -13,7 +13,7 @@ trigger:
     - azure_example1_terraform_devops_pipeline
   paths:
     include:
-    - terraform/azure-infra/example1/
+    - terraform/azure-infra/example1/*
 
 stages :
   - stage: Installation
