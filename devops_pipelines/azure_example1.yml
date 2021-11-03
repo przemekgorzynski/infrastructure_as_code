@@ -18,52 +18,31 @@ trigger:
 stages :
   - stage: Installation
     jobs:
-    - job: Install_Terraform
+    - job: Check
       continueOnError: false
       pool:
         vmImage: '${{ parameters.image }}'
       steps:
       - task: TerraformInstaller@0
-        displayName: 'install'
         inputs:
           terraformVersion: '0.12.3'
-    - job: Init_Provider
-      steps:
-      - task: TerraformTaskV1@0
-        displayName: 'init'
+      - task: TerraformTaskV2@2
         inputs:
           provider: 'azurerm'
           command: 'init'
-          backendAzureRmStorageAccountName: 'storagefortfcode'
-          backendAzureRmContainerName: 'terraform'
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
+          backendAzureRmStorageAccountName: 'storagefortfcode'
+          backendAzureRmContainerName: 'terraform'
           backendAzureRmKey: 'terraform.tfstate'
-  - stage: Validation
-    jobs:
-    - job: Validate_code
-      steps:
-      - task: TerraformTaskV1@0
-        displayName: 'validate'
+
+      - task: TerraformTaskV2@2
         inputs:
           provider: 'azurerm'
           command: 'validate'
-          backendServiceArm: 'WSBAzureSP'
-  - stage: Deployment
-    jobs:
-    - job: Terraform_plan
-      steps:
-        - task: TerraformTaskV1@0
-          displayName: 'plan'
-          inputs:
-            provider: 'azurerm'
-            command: 'plan'
-            environmentServiceNameAzureRM: 'WSBAzureSP'
-            workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
-#        - task: TerraformTaskV1@0
-#          displayName: 'apply'
-#          inputs:
-#            provider: 'azurerm'
-#            command: 'apply'
-#            environmentServiceNameAzureRM: 'tamopstf'
-          
+
+      - task: TerraformTaskV2@2
+        inputs:
+          provider: 'azurerm'
+          command: 'plan'
+          environmentServiceNameAzureRM: 'WSBAzureSP'
