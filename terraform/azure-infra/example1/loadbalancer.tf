@@ -42,11 +42,3 @@ resource "azurerm_lb_rule" "loadbalancer_rule" {
   frontend_ip_configuration_name = azurerm_lb.prod_lb.frontend_ip_configuration[0].name
   backend_address_pool_id        = azurerm_lb_backend_address_pool.loadbalancer_backend_pool.id
 }
-
-resource "time_sleep" "wait_for_60sec" {
-  create_duration = "60s"
-
-  depends_on = [
-    azurerm_lb.prod_lb
-  ]
-}
