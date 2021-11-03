@@ -23,10 +23,14 @@ stages :
       pool:
         vmImage: '${{ parameters.image }}'
       steps:
-      - task: TerraformInstaller@0
-        displayName: 'install'
-        inputs:
-          terraformVersion: '0.12.3'
+      - script: |
+          sudo apt upgrade -y
+          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+          sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+          sudo apt install -y terraform
+          terraform providers
+          terraform --version
+        displayName: Install Terraform
     - job: Init_Provider
       steps:
       - task: TerraformTaskV2@2
@@ -39,12 +43,6 @@ stages :
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
-      - script: |
-          sudo apt upgrade -y
-          sudo apt install -y terraform
-          terraform providers
-          terraform --version
-        displayName: Show Terraform provider
   - stage: Validation
     jobs:
     - job: Validate_code
