@@ -40,8 +40,10 @@ stages :
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
       - script: |
-          sudo apt update -y
+          sudo apt upgrade -y
+          sudo apt install -y terraform
           terraform providers
+          terraform --version
         displayName: Show Terraform provider
   - stage: Validation
     jobs:
