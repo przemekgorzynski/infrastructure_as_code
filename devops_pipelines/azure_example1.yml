@@ -23,7 +23,7 @@ stages :
       pool:
         vmImage: '${{ parameters.image }}'
       steps:
-      - task: TerraformInstaller@2
+      - task: TerraformInstaller@1
         displayName: 'install'
         inputs:
           terraformVersion: '0.12.3'
