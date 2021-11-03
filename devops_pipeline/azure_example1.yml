@@ -29,7 +29,7 @@ stages :
           terraformVersion: '0.12.3'
   - stage: Validation
     jobs:
-    - job: Init Provider
+    - job: Init_Provider
       steps:
       - task: TerraformTaskV1@0
         displayName: 'init'
@@ -41,7 +41,7 @@ stages :
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
-    - job: Validate code
+    - job: Validate_code
       steps:
       - task: TerraformTaskV1@0
         displayName: 'validate'
