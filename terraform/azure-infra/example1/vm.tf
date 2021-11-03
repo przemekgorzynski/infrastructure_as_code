@@ -37,6 +37,7 @@ resource "azurerm_linux_virtual_machine" "bastion" {
             "sudo apt update",
             "sudo apt upgrade -y",
             "sudo apt install sshpass -y",
+            "sleep 30",
             "sshpass -p ${var.username-password} ssh -o \"StrictHostKeyChecking=no\" ${var.vm-username}@${var.nic-vm01-prod} \"sudo apt update && sudo apt upgrade -y && sudo apt install -y apache2 && echo \"Hosted on VM01-prod\" | sudo tee /var/www/html/index.html && sudo systemctl restart apache2\"",
             "sshpass -p ${var.username-password} ssh -o \"StrictHostKeyChecking=no\" ${var.vm-username}@${var.nic-vm02-prod} \"sudo apt update && sudo apt upgrade -y && sudo apt install -y apache2 && echo \"Hosted on VM02-prod\" | sudo tee /var/www/html/index.html && sudo systemctl restart apache2\"",
         ]

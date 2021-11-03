@@ -32,19 +32,16 @@ Commands:
 
 At the end of deployment following data are returned in console:
 
-    Admin_user = "admuser" (Defined in vars.tf file)
+    Admin_user = "admuser"  (Defined in vars.tf file)
     Admin_user_password = Login Password for admin defined in vars.tf file
+    FQDN = "custom-webpage-pg.westeurope.cloudapp.azure.com"  (Custom Domain defined in vars.tf file)
     Bastion_IP = "40.68.13.4"
     LB_IP = "40.114.253.194"
 
-
 # Validation
 
-Go to Loab balancer IP address and webpage is displayed.
+Go to Loab balancer IP address ( or FQDN ) and webpage is displayed.
 
 ![alt test]( https://github.com/przemekgorzynski/infrastructure_as_code/blob/master/terraform/azure-infra/example1/docs/webpage.png )
 
-
-
-## Improvements 2do:
-- Add custom DNS to reach webpage with DNS instead of IP
+![alt test]( https://github.com/przemekgorzynski/infrastructure_as_code/blob/master/terraform/azure-infra/example1/docs/fqdn.png )

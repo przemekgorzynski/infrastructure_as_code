@@ -57,4 +57,5 @@ resource "azurerm_public_ip" "pip-loadbalancer" {
   location            = azurerm_resource_group.rg_prod.location
   allocation_method   = "Dynamic"
   idle_timeout_in_minutes = 10
+  domain_name_label   = var.custom-dns
 }

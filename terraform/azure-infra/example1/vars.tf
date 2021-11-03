@@ -117,3 +117,8 @@ variable "os-sku" {
 variable "os-version" {
     default = "latest"
 }
+
+# DNS
+variable "custom-dns" {
+    default = "custom-webpage-pg"
+}

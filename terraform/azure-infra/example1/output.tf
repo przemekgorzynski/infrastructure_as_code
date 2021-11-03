@@ -10,6 +10,10 @@ output "LB_IP" {
     value = azurerm_public_ip.pip-loadbalancer.ip_address
 }
 
+output "FQDN" {
+    value = azurerm_public_ip.pip-loadbalancer.fqdn
+}
+
 output "Admin_user_password" {
     value = var.username-password
 }
