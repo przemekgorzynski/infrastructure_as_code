@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: TerraformInstaller@0
+  name: 'terraform_install'
+  displayName: 'Terraform install'
+  inputs:
+    terraformVersion: '1.0.2'
+- task: TerraformTaskV2@2
+  name: 'terraform_init'
+  displayName: 'Terraform init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+
+- task: TerraformTaskV2@2
+  name: 'terraform_validate'
+  displayName: 'Terraform validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+- task: TerraformTaskV2@2
+  name: 'terraform_plan'
+  displayName: 'Terraform plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+
+#- task: TerraformTaskV2@2
+#  name: 'terraform_apply'
+#  displayName: 'Terraform apply'
+#  inputs:
+#    provider: 'azurerm'
+#    command: 'apply'
