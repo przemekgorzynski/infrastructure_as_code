@@ -51,7 +51,7 @@ stages :
           backendServiceArm: 'WSBAzureSP'
   - stage: Deployment
     jobs:
-    - job: Validate_code
+    - job: Terraform_plan
       steps:
         - task: TerraformTaskV1@0
           displayName: 'plan'
@@ -59,7 +59,7 @@ stages :
             provider: 'azurerm'
             command: 'plan'
             environmentServiceNameAzureRM: 'WSBAzureSP'
-
+            workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
 #        - task: TerraformTaskV1@0
 #          displayName: 'apply'
 #          inputs:

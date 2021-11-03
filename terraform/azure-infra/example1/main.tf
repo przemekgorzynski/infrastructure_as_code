@@ -15,5 +15,3 @@ provider "azurerm" {
   client_id         = var.service_principal_appid
   client_secret     = var.service_principal_password
 }
-
-data "azurerm_client_config" "current" {}
