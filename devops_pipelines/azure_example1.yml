@@ -39,6 +39,10 @@ stages :
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
+      - script: |
+          sudo apt update -y
+          terraform providers
+        displayName: Show Terraform provider
   - stage: Validation
     jobs:
     - job: Validate_code
