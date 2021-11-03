@@ -49,25 +49,21 @@ stages :
           provider: 'azurerm'
           command: 'validate'
           backendServiceArm: 'WSBAzureSP'
+  - stage: Deploy
+    jobs:
+    - job: Deploy_code
+      steps:
+        - checkout: self
+        - task: TerraformTaskV1@0
+          displayName: 'plan'
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            environmentServiceNameAzureRM: 'tamopstf'
+        - task: TerraformTaskV1@0
+          displayName: 'apply'
+          inputs:
+            provider: 'azurerm'
+            command: 'apply'
+            environmentServiceNameAzureRM: 'tamopstf'
           
-
-#- task: TerraformTaskV2@2
-#  name: 'terraform_validate'
-#  displayName: 'Terraform validate'
-#  inputs:
-#    provider: 'azurerm'
-#    command: 'validate'
-
-#- task: TerraformTaskV2@2
-#  name: 'terraform_plan'
-#  displayName: 'Terraform plan'
-#  inputs:
-#    provider: 'azurerm'
-#    command: 'plan'
-
-#- task: TerraformTaskV2@2
-#  name: 'terraform_apply'
-#  displayName: 'Terraform apply'
-#  inputs:
-#    provider: 'azurerm'
-#    command: 'apply'
