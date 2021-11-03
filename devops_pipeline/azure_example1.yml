@@ -18,7 +18,7 @@ trigger:
 stages :
   - stage: Installation
     jobs:
-    - job: Install Terraform
+    - job: Install_Terraform
       continueOnError: false
       pool:
         vmImage: '${{ parameters.image }}'
