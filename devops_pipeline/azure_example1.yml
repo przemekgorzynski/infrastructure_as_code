@@ -49,31 +49,33 @@ stages :
           provider: 'azurerm'
           command: 'validate'
           backendServiceArm: 'WSBAzureSP'
-  - stage: Deploy
-    jobs:
-    - job: Deploy_code
-      steps:
-        - checkout: self
-        - task: TerraformInstaller@0
-          displayName: 'install'
-          inputs:
-            terraformVersion: '0.12.3'
-        - task: TerraformTaskV1@0
-          displayName: 'init'
-          inputs:
-            provider: 'azurerm'
-            command: 'init'
-            backendAzureRmStorageAccountName: 'storagefortfcode'
-            backendAzureRmContainerName: 'terraform'
-            backendServiceArm: 'WSBAzureSP'
-            backendAzureRmResourceGroupName: 'Terraform'
-            backendAzureRmKey: 'terraform.tfstate'
-        - task: TerraformTaskV1@0
-          displayName: 'plan'
-          inputs:
-            provider: 'azurerm'
-            command: 'plan'
-            environmentServiceNameAzureRM: 'WSBAzureSP'
+  - stage: Deployment
+    continueOnError: false
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - checkout: self
+            - task: TerraformInstaller@0
+              displayName: 'install'
+              inputs:
+                terraformVersion: '0.12.3'
+            - task: TerraformTaskV1@0
+              displayName: 'init'
+              inputs:
+                provider: 'azurerm'
+                command: 'init'
+                backendAzureRmStorageAccountName: 'storagefortfcode'
+                backendAzureRmContainerName: 'terraform'
+                backendServiceArm: 'WSBAzureSP'
+                backendAzureRmResourceGroupName: 'Terraform'
+                backendAzureRmKey: 'terraform.tfstate'
+            - task: TerraformTaskV1@0
+              displayName: 'plan'
+              inputs:
+                provider: 'azurerm'
+                command: 'plan'
+                environmentServiceNameAzureRM: 'WSBAzureSP'
 #        - task: TerraformTaskV1@0
 #          displayName: 'apply'
 #          inputs:
