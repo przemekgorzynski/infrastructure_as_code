@@ -23,13 +23,13 @@ stages :
       pool:
         vmImage: '${{ parameters.image }}'
       steps:
-      - task: TerraformInstaller
+      - task: TerraformInstaller@0
         displayName: 'install terraform'
         inputs:
           terraformVersion: latest
     - job: Init_Provider
       steps:
-      - task: TerraformCLI
+      - task: TerraformCLI@0
         displayName: 'terraform init'
         inputs:
           backendType: azurerm
