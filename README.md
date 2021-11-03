@@ -1,2 +1,2 @@
 # infrastructure_as_code
-Various configuration to keep Infrastructure as code
+Repository to exercise "Infrastructure as code" approach.
