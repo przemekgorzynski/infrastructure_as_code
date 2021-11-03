@@ -59,7 +59,7 @@ stages :
             provider: 'azurerm'
             command: 'plan'
             environmentServiceNameAzureRM: 'WSBAzureSP'
-            workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
+            configurationDirectory: '$(System.DefaultWorkingDirectory)'
 #        - task: TerraformTaskV1@0
 #          displayName: 'apply'
 #          inputs:
