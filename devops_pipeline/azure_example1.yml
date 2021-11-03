@@ -59,7 +59,6 @@ stages :
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            environmentServiceNameAzureRM: 'tamopstf'
 #        - task: TerraformTaskV1@0
 #          displayName: 'apply'
 #          inputs:
