@@ -27,13 +27,13 @@ stages :
         displayName: 'install'
         inputs:
           terraformVersion: '0.12.3'
-      - task: TerraformTaskV1@0
+      - task: TerraformTaskV1@2
         displayName: 'init'
         inputs:
           provider: 'azurerm'
           command: 'init'
           backendServiceArm: 'WSBAzureSP'
-      - task: TerraformTaskV1@0
+      - task: TerraformTaskV1@2
         displayName: 'validate'
         inputs:
           provider: 'azurerm'
