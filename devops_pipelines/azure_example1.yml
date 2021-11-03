@@ -46,4 +46,4 @@ stages :
           provider: 'azurerm'
           command: 'plan'
           environmentServiceNameAzureRM: 'WSBAzureSP'
-          workingDirectory: '$(System.DefaultWorkingDirectory)'
+          workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
