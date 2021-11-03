@@ -39,7 +39,7 @@ stages :
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
-          workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
+          workingDirectory: '$(System.DefaultWorkingDirectory)'
   - stage: Validation
     jobs:
     - job: Validate_code
