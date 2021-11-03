@@ -4,19 +4,29 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: TerraformInstaller@0
-  displayName: Terraform install
-  inputs:
-    terraformVersion: latest
-
-- task: TerraformCLI@0
-  name: 'terraform_init'
-  displayName: 'Terraform init'
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'WSBAzureSP'
+stages :
+  - stage: validate
+    jobs:
+    - job: validate
+      continueOnError: false
+      steps:
+      - task: TerraformInstaller@0
+        displayName: 'install'
+        inputs:
+          terraformVersion: 'latest'
+      - task: TerraformTaskV1@0
+        displayName: 'init'
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          backendServiceArm: 'WSBAzureSP'
+      - task: TerraformTaskV1@0
+        displayName: 'validate'
+        inputs:
+          provider: 'azurerm'
+          command: 'validate'
+          backendServiceArm: 'WSBAzureSP'
+          
 
 #- task: TerraformTaskV2@2
 #  name: 'terraform_validate'
