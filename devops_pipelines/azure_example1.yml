@@ -24,7 +24,7 @@ stages :
         vmImage: '${{ parameters.image }}'
       steps:
       - task: TerraformInstaller
-          displayName: Install_terraform
+        displayName: Install terraform
     - job: Init_Provider
       steps:
       - task: TerraformCLI
