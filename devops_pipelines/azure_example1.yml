@@ -39,6 +39,7 @@ stages :
           backendServiceArm: 'WSBAzureSP'
           backendAzureRmResourceGroupName: 'Terraform'
           backendAzureRmKey: 'terraform.tfstate'
+          workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
   - stage: Validation
     jobs:
     - job: Validate_code
@@ -59,7 +60,8 @@ stages :
             provider: 'azurerm'
             command: 'plan'
             environmentServiceNameAzureRM: 'WSBAzureSP'
-            configurationDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
+#            configurationDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
+#            workingDirectory: '$(System.DefaultWorkingDirectory)\terraform\terra'
 #        - task: TerraformTaskV1@0
 #          displayName: 'apply'
 #          inputs:
