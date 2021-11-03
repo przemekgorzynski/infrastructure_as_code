@@ -30,8 +30,6 @@ stages :
   - stage: Validation
     jobs:
     - job: Validate
-      pool:
-      vmImage: '${{ parameters.image }}'
       steps:
       - task: TerraformTaskV1@0
         displayName: 'init'
