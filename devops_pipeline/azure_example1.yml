@@ -10,12 +10,13 @@ steps:
   inputs:
     terraformVersion: latest
 
-#- task: TerraformTaskV2@2
-#  name: 'terraform_init'
-#  displayName: 'Terraform init'
-#  inputs:
-#    provider: 'azurerm'
-#    command: 'init'
+- task: TerraformTaskV2@2
+  name: 'terraform_init'
+  displayName: 'Terraform init'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'WSBAzureSP'
 
 #- task: TerraformTaskV2@2
 #  name: 'terraform_validate'
