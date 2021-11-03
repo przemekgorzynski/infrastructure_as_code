@@ -13,7 +13,7 @@ trigger:
     - master
   paths:
     include:
-    - /terraform/azure-infra/example1/
+    - terraform/azure-infra/example1/
 
 stages :
   - stage: Installation
