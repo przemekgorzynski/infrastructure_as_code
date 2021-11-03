@@ -16,9 +16,9 @@ trigger:
     - /terraform/azure-infra/example1/
 
 stages :
-  - stage: Validation
+  - stage: Installation
     jobs:
-    - job: validate
+    - job: Install
       continueOnError: false
       pool:
         vmImage: '${{ parameters.image }}'
@@ -27,6 +27,12 @@ stages :
         displayName: 'install'
         inputs:
           terraformVersion: '0.12.3'
+  - stage: Validation
+    jobs:
+    - job: Validate
+      pool:
+      vmImage: '${{ parameters.image }}'
+      steps:
       - task: TerraformTaskV1@0
         displayName: 'init'
         inputs:
