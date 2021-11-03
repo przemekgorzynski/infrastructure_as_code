@@ -24,23 +24,25 @@ stages :
         vmImage: '${{ parameters.image }}'
       steps:
       - task: TerraformInstaller
-        displayName: Install terraform
+        displayName: 'install terraform'
+        inputs:
+          terraformVersion: latest
     - job: Init_Provider
       steps:
       - task: TerraformCLI
-          displayName: 'terraform init'
-          inputs:
-            backendType: azurerm
-            command: Init
-            backendServiceArm: 'WSBAzureSP'
-            # create backend storage account if doesn't exist
-            ensureBackend: true
-            backendAzureRmStorageAccountSku: 'Standard_LRS'
-            backendAzureRmResourceGroupName: 'Terraform'
-            backendAzureRmResourceGroupLocation: 'North Europe'
-            backendAzureRmStorageAccountName: 'storagefortfcode'
-            backendAzureRmContainerName: 'terraform'
-            backendAzureRmKey: 'terraform.tfstate'
+        displayName: 'terraform init'
+        inputs:
+          backendType: azurerm
+          command: Init
+          backendServiceArm: 'WSBAzureSP'
+          # create backend storage account if doesn't exist
+          ensureBackend: true
+          backendAzureRmStorageAccountSku: 'Standard_LRS'
+          backendAzureRmResourceGroupName: 'Terraform'
+          backendAzureRmResourceGroupLocation: 'North Europe'
+          backendAzureRmStorageAccountName: 'storagefortfcode'
+          backendAzureRmContainerName: 'terraform'
+          backendAzureRmKey: 'terraform.tfstate'
 #  - stage: Validation
 #    jobs:
 #    - job: Validate_code
