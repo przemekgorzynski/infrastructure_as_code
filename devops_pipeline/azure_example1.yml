@@ -53,6 +53,7 @@ stages :
     jobs:
       - deployment: deploy_terraform
         continueOnError: false
+        environment: 'prod'
         strategy:
           runOnce:
             deploy:
