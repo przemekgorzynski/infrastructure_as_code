@@ -1,5 +1,11 @@
 trigger:
-- master
+  batch: false
+  branches:
+    include:
+    - master
+  paths:
+    include:
+    - /terraform/azure-infra/example1/
 
 pool:
   vmImage: ubuntu-latest
