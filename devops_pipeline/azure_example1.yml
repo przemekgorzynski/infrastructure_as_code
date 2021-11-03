@@ -33,6 +33,7 @@ stages :
           provider: 'azurerm'
           command: 'init'
           backendAzureRmStorageAccountName: 'storagefortfcode'
+          backendAzureRmContainerName: 'terraform'
           backendServiceArm: 'WSBAzureSP'
       - task: TerraformTaskV1@0
         displayName: 'validate'
