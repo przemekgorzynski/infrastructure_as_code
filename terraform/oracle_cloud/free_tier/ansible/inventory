@@ -1,0 +1,5 @@
+pihole.oci ansible_host=144.24.162.168
+
+
+[all]
+pihole.oci
