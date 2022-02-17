@@ -47,6 +47,15 @@ resource "oci_core_security_list" "pihole_security_list" {
     ingress_security_rules {
         #Required
         source = "0.0.0.0/0"
+        protocol = "6"
+        tcp_options {
+            max = "8090"
+            min = "8080"
+        }
+    }
+    ingress_security_rules {
+        #Required
+        source = "0.0.0.0/0"
         protocol = "17"
         udp_options {
             max = "53"
