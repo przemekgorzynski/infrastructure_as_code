@@ -22,7 +22,7 @@
       path: "/datadisk/pihole/{{ item }}"
       owner: root
       group: root
-      mode: '0775'
+      mode: '0777'
     with_items:
     - app
     - dnsmasq
