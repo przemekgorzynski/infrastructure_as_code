@@ -38,6 +38,12 @@
       path: /etc/resolv.conf
       line: nameserver 1.1.1.1
 
+  - name: Create Docker network
+    community.docker.docker_network:
+      name: pihole_network
+      ipam_config:
+        - subnet: 10.0.0.0/24
+
   - name: Run Pihole docker container
     docker_container:
       name: pihole
@@ -55,4 +61,7 @@
         - 53:53/tcp
         - 53:53/udp
         - 67:67/udp
+      networks:
+        - name: pihole_network
+          ipv4_address: "10.0.0.2"
       restart_policy: unless-stopped

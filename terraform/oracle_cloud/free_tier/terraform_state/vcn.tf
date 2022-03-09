@@ -19,12 +19,16 @@ resource "oci_core_subnet" "pihole_subnet" {
     security_list_ids = [oci_core_security_list.pihole_security_list.id]
 }
 
-resource "oci_core_subnet" "test_subnet" {
+resource "oci_core_subnet" "monitoring_subnet" {
     cidr_block = var.subnet_cidr_block.vcn_test_subnet
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.vcn.id
-    display_name = var.subnet_names.subnet_test
-    freeform_tags = {"subnet"= "test"}
+    display_name = var.subnet_names.subnet_monitoring
+    freeform_tags = {"subnet"= "monitoring"}
+    prohibit_internet_ingress = false
+    prohibit_public_ip_on_vnic = false
+    dns_label = "monitorsubnet"
+    security_list_ids = [oci_core_security_list.monitoring_security_list.id]
 }
 
 resource "oci_core_internet_gateway" "internet_gateway" {
