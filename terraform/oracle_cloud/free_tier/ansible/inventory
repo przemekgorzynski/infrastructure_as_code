@@ -1,5 +1,6 @@
 pihole.oci ansible_host=144.24.162.168
-
+monitoring.oci ansible_host=141.144.242.24
 
 [all]
 pihole.oci
+monitoring.oci

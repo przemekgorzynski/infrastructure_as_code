@@ -9,7 +9,7 @@ compartments:
 filters:
   - lifecycle_state: RUNNING
 hostname_format_preferences:
-  - "display_name+'.oci'"
-#  - "public_ip"
+#  - "display_name+'.oci'"
+  - "public_ip"
 groups:
   prod: 'compartment_id == "ocid1.tenancy.oc1..aaaaaaaai6pwlqfxlt2bw7jw5uti2hf2jnwmaxr6wdyrap3q7pqxbjn4bvwa"'
