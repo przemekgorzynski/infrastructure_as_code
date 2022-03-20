@@ -1,45 +1,22 @@
-resource "oci_core_volume" "pihole_volume" {
+resource "oci_core_volume" "k8s_master_volume" {
     #Required
     compartment_id = var.compartment_id
 
     #Optional
     availability_domain = var.availability_domain
-    display_name = var.block_volume_name
+    display_name = var.k8s_master_block_volume_name
     is_auto_tune_enabled = true
-    size_in_gbs = var.volume_size_in_gbs
-    vpus_per_gb = var.volume_vpus_per_gb
+    size_in_gbs = var.k8s_master_volume_size_in_gbs
+    vpus_per_gb = var.k8s_master_volume_vpus_per_gb
 }
 
 
-resource "oci_core_volume_attachment" "pihole_volume_attachment" {
+resource "oci_core_volume_attachment" "k8s_master_volume_attachment" {
     attachment_type = "iscsi"
-    instance_id = oci_core_instance.pihole.id
-    volume_id = oci_core_volume.pihole_volume.id
+    instance_id = oci_core_instance.k8s_master.id
+    volume_id = oci_core_volume.k8s_master_volume.id
     device = var.volume_device
-    display_name = "pihole_block_volume_attachment"
-    is_read_only = false
-    is_shareable = false
-}
-
-resource "oci_core_volume" "monitoring_volume" {
-    #Required
-    compartment_id = var.compartment_id
-
-    #Optional
-    availability_domain = var.availability_domain
-    display_name = var.monitoring_block_volume_name
-    is_auto_tune_enabled = true
-    size_in_gbs = var.monitoring_volume_size_in_gbs
-    vpus_per_gb = var.monitoring_volume_vpus_per_gb
-}
-
-
-resource "oci_core_volume_attachment" "monitoring_volume_attachment" {
-    attachment_type = "iscsi"
-    instance_id = oci_core_instance.monitoring.id
-    volume_id = oci_core_volume.monitoring_volume.id
-    device = var.volume_device
-    display_name = "monitoring_block_volume_attachment"
+    display_name = "k8s_master_block_volume_attachment"
     is_read_only = false
     is_shareable = false
 }

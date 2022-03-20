@@ -1,0 +1,20 @@
+---
+- name: Maintenance
+  hosts: all
+  gather_facts: yes
+  user: przemek
+  become: yes
+  
+  pre_tasks:
+  - name: check connectivity
+    ping:
+
+  tasks:
+  - name: Update cache 
+    apt:
+     update_cache: yes
+       
+  - name: Upgrade all packages on servers
+    apt: 
+      name: "*"
+      state: latest

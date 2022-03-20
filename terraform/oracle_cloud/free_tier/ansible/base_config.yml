@@ -13,18 +13,11 @@
       - python3-pip
     python_pip_packages:
       - docker-py
-    mount_point: "/datadisk"
 
   
   pre_tasks:
   - name: check connectivity
     ping:
-  - name: Check data disk size ( if equal ir less then 0 job fails)
-    block: 
-      - parted: device=/dev/sdb unit=MiB
-        register: sdb_info
-      - fail:
-        when: "{{ sdb_info.disk.size|int }} <= 0"
       
   tasks:
   - name: Update /etc/hosts
@@ -32,8 +25,10 @@
       path: /etc/hosts
       block: |
         {% for host in groups['all'] %}
-        {{ hostvars[host].ansible_host }} {{ host }}
+        {{ hostvars[host].ansible_default_ipv4.address }} {{ host }}
         {% endfor %}
+    tags:
+      - hosts
 
   - name: create admin group "admins"
     group:
@@ -101,25 +96,6 @@
 
   - name: Set timezone to Europe/Warsaw
     shell: timedatectl set-timezone "Europe/Warsaw"
-
-  - name: Create mount directory
-    file:
-      state: directory
-      path: "{{ mount_point }}"
-      owner: root
-      group: root
-      mode: '0777'
-
-  - name: Mount data disk
-    mount:
-      path: "{{ mount_point }}"
-      src: /dev/sdb1
-      state: present
-      fstype: ext4
-      opts: defaults,nofail
-
-  - name: Refrest mount drives
-    shell: mount -a
 
   - name: Reboot
     reboot: 

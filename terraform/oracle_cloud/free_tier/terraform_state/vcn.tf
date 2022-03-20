@@ -7,28 +7,28 @@ resource "oci_core_vcn" "vcn" {
 #    default_route_table_id = oci_core_route_table.route_table.id
 }
 
-resource "oci_core_subnet" "pihole_subnet" {
-    cidr_block = var.subnet_cidr_block.vcn_pihole_subnet
+resource "oci_core_subnet" "mgmnt_subnet" {
+    cidr_block = var.subnet_cidr_block.vcn_mgmnt_subnet
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.vcn.id
+    display_name = var.subnet_names.subnet_mgmnt
+    freeform_tags = {"subnet"= "mgmnt"}
     prohibit_internet_ingress = false
     prohibit_public_ip_on_vnic = false
-    dns_label = "pisubnet"
-    display_name = var.subnet_names.subnet_pihole
-    freeform_tags = {"subnet"= "pihole"}
-    security_list_ids = [oci_core_security_list.pihole_security_list.id]
+    dns_label = "mgmntsubnet"
+    security_list_ids = [oci_core_security_list.mgmnt_security_list.id]
 }
 
-resource "oci_core_subnet" "monitoring_subnet" {
-    cidr_block = var.subnet_cidr_block.vcn_test_subnet
+resource "oci_core_subnet" "k8s_subnet" {
+    cidr_block = var.subnet_cidr_block.vcn_k8s_subnet
     compartment_id = var.compartment_id
     vcn_id = oci_core_vcn.vcn.id
-    display_name = var.subnet_names.subnet_monitoring
-    freeform_tags = {"subnet"= "monitoring"}
+    display_name = var.subnet_names.subnet_k8s
+    freeform_tags = {"subnet"= "k8s"}
     prohibit_internet_ingress = false
     prohibit_public_ip_on_vnic = false
-    dns_label = "monitorsubnet"
-    security_list_ids = [oci_core_security_list.monitoring_security_list.id]
+    dns_label = "k8ssubnet"
+    security_list_ids = [oci_core_security_list.k8s_security_list.id]
 }
 
 resource "oci_core_internet_gateway" "internet_gateway" {

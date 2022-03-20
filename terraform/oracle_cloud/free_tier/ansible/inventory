@@ -1,6 +1,6 @@
-pihole.oci ansible_host=144.24.162.168
-monitoring.oci ansible_host=141.144.242.24
+k8s-master ansible_host=141.144.225.34
+k8s-node1 ansible_host=130.162.225.91
 
 [all]
-pihole.oci
-monitoring.oci
+k8s-master
+k8s-node1

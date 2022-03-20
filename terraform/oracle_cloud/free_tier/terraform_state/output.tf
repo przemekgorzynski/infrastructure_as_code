@@ -1,7 +1,3 @@
-output "Pihole_IP" {
-    value = oci_core_instance.pihole.public_ip
-}
-
-output "Monitoring_IP" {
-    value = oci_core_instance.monitoring.public_ip
+output "K8s_master_IP" {
+    value = oci_core_instance.k8s_master.public_ip
 }
