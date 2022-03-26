@@ -1,8 +1,6 @@
-k8s-master ansible_host=141.144.236.5
-k8s-node1 ansible_host=138.3.250.70
-k8s-node2 ansible_host=130.61.191.89
-
-
+k8s-master ansible_host=141.144.227.186
+k8s-node1 ansible_host=152.70.189.112
+k8s-node2 ansible_host=144.24.177.121
 
 
 [all]
