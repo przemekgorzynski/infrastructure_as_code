@@ -1,10 +1,12 @@
-resource "oci_core_instance" "k8s_master" {
+# ARM NODES in a loop
+resource "oci_core_instance" "k8s_arm_nodes" {
+    count = var.k8s_arm_nodes_number
     availability_domain = var.availability_domain
     compartment_id = var.compartment_id
-    shape = var.k8s_master_shape
-    display_name = var.k8s_master_hostanme
+    shape = var.k8s_node_shape
+    display_name = "${var.k8s_node_hostanme}${count.index+1}"
     fault_domain = var.instance_fault_domain
-    freeform_tags = {"instance"= "k8s_master"}
+    freeform_tags = {"instance"= "k8s_node${count.index+1}"}
     is_pv_encryption_in_transit_enabled = true
     preserve_boot_volume = false
 
@@ -13,17 +15,18 @@ resource "oci_core_instance" "k8s_master" {
     }
 
     shape_config {
-        memory_in_gbs = var.k8s_master_memory
-        ocpus = var.k8s_master_ocpus
+        memory_in_gbs = var.k8s_node_memory
+        ocpus = var.k8s_node_ocpus
     }
 
     create_vnic_details {
-        private_ip = var.k8s_master_internal_ip
+        private_ip = "${var.k8s_nodes_prefix_internal_ip}${count.index+101}"
         assign_public_ip = true
-        display_name = "k8s_master_nic"
-        freeform_tags = {"instance"= "k8s_master", "subnet"= "${oci_core_subnet.k8s_subnet.display_name}"}
-        hostname_label = "k8smaster"
+        display_name = "k8s_arm_node${count.index+1}_nic"
+        freeform_tags = {"instance"= "k8s_arm_node${count.index+1}", "subnet"= "${oci_core_subnet.k8s_subnet.display_name}"}
+        hostname_label = "k8sarmnode${count.index+1}"
         subnet_id = oci_core_subnet.k8s_subnet.id
+        nsg_ids = [oci_core_network_security_group.k8s_nsg.id]
     }
 
     launch_options {
@@ -56,16 +59,14 @@ resource "oci_core_instance" "k8s_master" {
     }
 }
 
-
-#NODES in a loop
-resource "oci_core_instance" "k8s_nodes" {
-    count = var.k8s_nodes_number
+# AMD NODEs in loop
+resource "oci_core_instance" "k8s_amd_nodes" {
+    count = var.k8s_amd_nodes_number
     availability_domain = var.availability_domain
     compartment_id = var.compartment_id
-    shape = var.k8s_node_shape
-    display_name = "${var.k8s_node_hostanme}${count.index+1}"
+    shape = var.k8s_amd_node_shape
+    display_name = "${var.k8s_amd_node_hostanme}${count.index+1}"
     fault_domain = var.instance_fault_domain
-    freeform_tags = {"instance"= "k8s_node${count.index+1}"}
     is_pv_encryption_in_transit_enabled = true
     preserve_boot_volume = false
 
@@ -74,17 +75,18 @@ resource "oci_core_instance" "k8s_nodes" {
     }
 
     shape_config {
-        memory_in_gbs = var.k8s_node_memory
-        ocpus = var.k8s_node_ocpus
+        memory_in_gbs = var.k8s_amd_node_memory
+        ocpus = var.k8s_amd_node_ocpus
     }
 
     create_vnic_details {
-        private_ip = "${var.k8s_nodes_prefix_internal_ip}${count.index+101}"
+        private_ip = "${var.k8s_nodes_prefix_internal_ip}${var.k8s_arm_nodes_number+101}"
         assign_public_ip = true
-        display_name = "k8s_node${count.index+1}_nic"
-        freeform_tags = {"instance"= "k8s_node${count.index+1}", "subnet"= "${oci_core_subnet.k8s_subnet.display_name}"}
-        hostname_label = "k8snode${count.index+1}"
+        display_name = "k8s_amd_node${count.index+1}_nic"
+        freeform_tags = {"instance"= "k8s_amd_node${count.index+1}", "subnet"= "${oci_core_subnet.k8s_subnet.display_name}"}
+        hostname_label = "k8samdnode${count.index+1}"
         subnet_id = oci_core_subnet.k8s_subnet.id
+        nsg_ids = [oci_core_network_security_group.k8s_nsg.id]
     }
 
     launch_options {
@@ -97,7 +99,7 @@ resource "oci_core_instance" "k8s_nodes" {
 
     source_details {
         #Required
-        source_id = var.image_id
+        source_id = var.image_id_amd
         source_type = "image"
         boot_volume_size_in_gbs = 50
     }

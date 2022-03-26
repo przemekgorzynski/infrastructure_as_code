@@ -27,8 +27,16 @@ variable "local_public_key_path" {
 
 #https://docs.oracle.com/en-us/iaas/images/ - images #Ubuntu20
 variable "image_id" {
-    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa6ueulrtedgclrxznl5pkzhzseddl7b6iq6jhdl3vjm62zhddpxta"
+    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma"
 }
+
+variable "image_id_amd" {
+    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2lrlzhaj5gsr7zrn3u4tzzh52usfnarabgjz7236hrrxaeomo5va"
+}
+
+#Ubuntu20
+#AARCH64 ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma
+#Minimal ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2lrlzhaj5gsr7zrn3u4tzzh52usfnarabgjz7236hrrxaeomo5va
 
 variable "volume_device" {
     default = "/dev/oracleoci/oraclevdb"
@@ -74,4 +82,16 @@ variable "subnet_names" {
     subnet_mgmnt = "mgmnt_subnet"
     subnet_k8s = "k8s_subnet"
   }
+}
+
+variable "k8s_security_list_name" {
+    default = "K8s Security List"
+}
+
+variable "k8s_master_internal_ip" {
+    default = "10.0.2.100"
+}
+
+variable "k8s_nodes_prefix_internal_ip" {
+    default = "10.0.2."
 }

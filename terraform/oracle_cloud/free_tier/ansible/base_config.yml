@@ -8,9 +8,12 @@
 
   vars:
     packages:
-      - docker.io
       - python3
       - python3-pip
+      - net-tools
+      - nmap
+      - telnet
+      - git
     python_pip_packages:
       - docker-py
 
