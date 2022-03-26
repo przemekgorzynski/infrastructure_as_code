@@ -2,7 +2,7 @@
 # ARM NODE INSTANCE
 
 variable "k8s_arm_nodes_number" {
-    default = "2"
+    default = "1"
 }
 
 variable "k8s_node_hostanme" {
@@ -18,14 +18,14 @@ variable "k8s_node_ocpus" {
 }
 
 variable "k8s_node_memory" {
-    default = "4"
+    default = "8"
 }
 
 #########################################################
 # AMD NODE INSTANCE
 
 variable "k8s_amd_nodes_number" {
-    default = "0"
+    default = "1"
 }
 
 variable "k8s_amd_node_hostanme" {

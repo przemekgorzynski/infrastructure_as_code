@@ -1,3 +1,3 @@
+ansible-galaxy collection install -r requirments.yml
 
-base config run 
-ansible-playbook -i inventory base_config.yml --user=ubuntu
+ansible-playbook -i inventory main.yml --user=ubuntu
