@@ -100,3 +100,38 @@
     state: present
   tags:
     - os_config
+
+- name: Prevent kubernetes from being upgraded
+  dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  with_items: 
+    - "{{ kubernetes_packages }}"
+  tags:
+    - os_config
+
+- name: Copy docker config files
+  ansible.builtin.copy:
+    src: "../files/{{ item.name }}"
+    dest: "{{ item.destination }}"
+    owner: root
+    group: root
+    mode: '0644'
+  loop:
+    - {name: 'docker_cgroup', destination: '/etc/docker/daemon.json'}
+  tags:
+    - os_config
+
+- name: Restart docker
+  service:
+    name: docker
+    state: restarted
+    enabled: true
+  tags:
+    - os_config
+
+- name: Reboot
+  reboot:
+    reboot_timeout: 180
+  tags:
+    - reboot

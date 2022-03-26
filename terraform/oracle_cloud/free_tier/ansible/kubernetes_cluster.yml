@@ -25,6 +25,10 @@
   pre_tasks:
     - name: Check connectivity
       ping:
+    - name: Fail when OS not Ubuntu
+      fail:
+        msg: OS version is not Ubuntu
+      when: '"Ubuntu" not in ansible_distribution'
 
   tasks:
     - import_role:
