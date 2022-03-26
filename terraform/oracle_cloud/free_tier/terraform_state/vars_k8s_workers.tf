@@ -14,18 +14,18 @@ variable "k8s_node_shape" {
 }
 
 variable "k8s_node_ocpus" {
-    default = "1"
+    default = "2"
 }
 
 variable "k8s_node_memory" {
-    default = "8"
+    default = "12"
 }
 
 #########################################################
 # AMD NODE INSTANCE
 
 variable "k8s_amd_nodes_number" {
-    default = "1"
+    default = "0"
 }
 
 variable "k8s_amd_node_hostanme" {

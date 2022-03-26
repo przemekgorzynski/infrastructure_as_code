@@ -1,0 +1,17 @@
+---
+packages:
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+  - apt-transport-https
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
+kubernetes_packages:
+  - kubelet
+  - kubeadm
+  - kubectl

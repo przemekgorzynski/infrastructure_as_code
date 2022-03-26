@@ -13,7 +13,7 @@ variable "k8s_master_ocpus" {
 }
 
 variable "k8s_master_memory" {
-    default = "16"
+    default = "12"
 }
 
 #K8s BLOCK VOLUME

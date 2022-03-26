@@ -9,7 +9,7 @@
   tags:
     - host
 
-- name: create admin group "admins"
+- name: Create admin group "admins"
   group:
     name: admins
     state: present
