@@ -1,0 +1,16 @@
+---
+- name: Base config
+  hosts: all
+  gather_facts: true
+  become_user: root
+  become_method: sudo
+  become: true
+
+  pre_tasks:
+    - name: Check connectivity
+      ping:
+
+  tasks:
+    - import_role:
+        name: base_config
+        tasks_from: main.yml

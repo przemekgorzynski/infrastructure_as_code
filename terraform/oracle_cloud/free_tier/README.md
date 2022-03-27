@@ -5,4 +5,5 @@ yamllint -c yamllint_rules.yml .
 ansible-galaxy collection install -r requirments.yml
 
 # RUN PLAYBOOK
-ansible-playbook -i inventory main.yml --user=ubuntu
+ansible-playbook -i inventory common_base_config.yml --user=ubuntu
+ansible-playbook -i inventory kubernetes_cluster.yml

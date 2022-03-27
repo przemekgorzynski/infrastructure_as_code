@@ -63,6 +63,14 @@
   tags:
     - os_config
 
+- name: Make sure UFW firewall is enabled
+  service:
+    name: ufw
+    state: started
+    enabled: true
+  tags:
+    - os_config
+
 - name: Install python-pip packages
   pip:
     name: "{{ python_pip_packages }}"

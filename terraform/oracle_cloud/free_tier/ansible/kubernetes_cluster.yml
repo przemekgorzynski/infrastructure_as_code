@@ -1,20 +1,4 @@
 ---
-- name: Base config
-  hosts: all
-  gather_facts: true
-  become_user: root
-  become_method: sudo
-  become: true
-
-  pre_tasks:
-    - name: Check connectivity
-      ping:
-
-  tasks:
-    - import_role:
-        name: base_config
-        tasks_from: main.yml
-
 - name: Kubernetes preflight
   hosts: all
   gather_facts: true
@@ -33,4 +17,17 @@
   tasks:
     - import_role:
         name: kubernetes_preflight
+        tasks_from: main.yml
+
+- name: Kubernetes master
+  hosts: master
+  gather_facts: true
+
+  pre_tasks:
+    - name: Check connectivity
+      ping:
+
+  tasks:
+    - import_role:
+        name: kubernetes_master
         tasks_from: main.yml

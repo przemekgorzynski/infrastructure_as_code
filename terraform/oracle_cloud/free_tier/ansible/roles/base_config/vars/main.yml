@@ -6,5 +6,6 @@ packages:
   - nmap
   - telnet
   - git
+  - ufw
 python_pip_packages:
   - docker-py

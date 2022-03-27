@@ -25,7 +25,7 @@ variable "k8s_node_memory" {
 # AMD NODE INSTANCE
 
 variable "k8s_amd_nodes_number" {
-    default = "0"
+    default = "1"
 }
 
 variable "k8s_amd_node_hostanme" {

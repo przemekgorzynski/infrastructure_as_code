@@ -1,0 +1,12 @@
+---
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+controlPlaneEndpoint: "{{ control_plane_endpoint_ip }}"
+networking:
+  serviceSubnet: "{{ service_cidr }}"
+  podSubnet: "{{ pod_network_cidr }}"
+nodeRegistration:
+  name: "{{ hostvars['k8s-master'].ansible_hostname }}"
+  taints:
+  - effect: PreferNoSchedule
+    key: node-role.kubernetes.io/master

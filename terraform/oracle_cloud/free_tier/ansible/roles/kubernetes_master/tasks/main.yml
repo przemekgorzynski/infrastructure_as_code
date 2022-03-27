@@ -1,0 +1,57 @@
+---
+- name: Create destination directory
+  become_user: root
+  become_method: sudo
+  become: true
+  file:
+    path: /{{ config_dir }}
+    state: directory
+  tags:
+    - kubernetes_master
+
+- name: Copy Cluster configuration file
+  become_user: root
+  become_method: sudo
+  become: true
+  template:
+    src: ../templates/Cluster_configuration.j2
+    dest: /{{ config_dir }}/Cluster_configuration.yml
+    owner: root
+    group: root
+    mode: '0640'
+    force: true
+    backup: true
+  tags:
+    - kubernetes_master
+
+- name: Init Kubernetes cluster
+  become_user: root
+  become_method: sudo
+  become: true
+  shell: kubeadm init --config /{{ config_dir }}/Cluster_configuration.yml --ignore-preflight-errors=Swap,Mem
+  register: kube_init
+  tags:
+    - kubernetes_master
+
+- name: Store Kubernetes initialization log in file /{{ config_dir }}/kube_init_log.txt
+  become_user: root
+  become_method: sudo
+  become: true
+  copy:
+    content: "{{ kube_init.stdout }}"
+    dest: /{{ config_dir }}/kube_init_log.txt
+  tags:
+    - kubernetes_master
+
+- name: Copy Kubernetes configuration files
+  shell: |
+    mkdir -p $HOME/.kube
+    sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  tags:
+    - kubernetes_master
+
+- name: Deploy cidr network
+  shell: kubectl apply -f {{ cidr_network_url }}
+  tags:
+    - kubernetes_master
