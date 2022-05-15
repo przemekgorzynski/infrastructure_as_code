@@ -32,11 +32,11 @@ module "pihole_subnet" {
     dns_label           = "pihole"
 }
 
-module "test_subnet" {
+module "monitoring_subnet" {
     source              = "./modules/subnets"
     compartment_id      = var.compartment_id
-    subnet_cidr_block   = var.subnet_cidr_block.testSubnet
+    subnet_cidr_block   = var.subnet_cidr_block.monitoringSubnet
     oci_core_vcn        = oci_core_vcn.vcn.id
-    subnet_name         = var.subnet_names.testSubnet
-    dns_label           = "test"
+    subnet_name         = var.subnet_names.monitoringSubnet
+    dns_label           = "monitoring"
 }

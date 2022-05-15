@@ -17,26 +17,13 @@ variable "availability_domain" {
     default = "WHWJ:EU-FRANKFURT-1-AD-2"
 }
 
-variable "instance_fault_domain" {
+variable "fault_domain" {
     default = "FAULT-DOMAIN-2"
 }
 
 variable "local_public_key_path" {
     default = "~/.ssh/id_rsa.pub"
 }
-
-#https://docs.oracle.com/en-us/iaas/images/ - images #Ubuntu20
-variable "image_id" {
-    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma"
-}
-
-variable "image_id_amd" {
-    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2lrlzhaj5gsr7zrn3u4tzzh52usfnarabgjz7236hrrxaeomo5va"
-}
-
-#Ubuntu20
-#AARCH64 ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma
-#Minimal ocid1.image.oc1.eu-frankfurt-1.aaaaaaaa2lrlzhaj5gsr7zrn3u4tzzh52usfnarabgjz7236hrrxaeomo5va
 
 variable "volume_device" {
     default = "/dev/oracleoci/oraclevdb"
@@ -72,7 +59,7 @@ variable "subnet_cidr_block" {
   type = map(string)
   default = {
     piholeSubnet = "10.0.1.0/24"
-    testSubnet   = "10.0.2.0/24"
+    monitoringSubnet   = "10.0.2.0/24"
   }
 }
 
@@ -80,18 +67,59 @@ variable "subnet_names" {
   type = map(string)
   default = {
     piholeSubnet = "pihole_subnet"
-    testSubnet = "test_subnet"
+    monitoringSubnet = "monitoring_subnet"
   }
 }
 
-variable "k8s_security_list_name" {
-    default = "K8s Security List"
+# PIHOLE
+variable "pihole_hostname" {
+    default = "pihole-vm"
 }
 
-variable "k8s_master_internal_ip" {
+variable "pihole_shape" {
+    default = "VM.Standard.A1.Flex"
+}
+
+variable "pihole_memory" {
+    default = "4"
+}
+
+variable "pihole_ocpus" {
+    default = "1"
+}
+
+variable "pihole_private_ip" {
+    default = "10.0.1.100"
+}
+
+#https://docs.oracle.com/en-us/iaas/images/ - images #Ubuntu20
+variable "pihole_image_id" {
+    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma"
+}
+
+
+# MONITORING
+variable "monitoring_hostname" {
+    default = "monitoring-vm"
+}
+
+variable "monitoring_shape" {
+    default = "VM.Standard.A1.Flex"
+}
+
+variable "monitoring_memory" {
+    default = "4"
+}
+
+variable "monitoring_ocpus" {
+    default = "1"
+}
+
+variable "monitoring_private_ip" {
     default = "10.0.2.100"
 }
 
-variable "k8s_nodes_prefix_internal_ip" {
-    default = "10.0.2."
+#https://docs.oracle.com/en-us/iaas/images/ - images #Ubuntu20
+variable "monitoring_image_id" {
+    default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma"
 }

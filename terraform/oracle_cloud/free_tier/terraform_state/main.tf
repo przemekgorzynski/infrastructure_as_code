@@ -9,3 +9,11 @@ provider "oci" {
   private_key_path = "${var.private_key_path}"
   region           = "${var.region}"
 }
+
+output "pihole_compute_data" {
+  value = module.pihole_compute.compute_data.public_ip
+}
+
+output "monitoring_compute_data" {
+  value = module.monitoring_compute.compute_data.public_ip
+}
