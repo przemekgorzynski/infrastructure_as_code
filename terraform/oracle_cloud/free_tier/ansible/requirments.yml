@@ -1,6 +1,0 @@
----
-collections:
-  - name: community.general
-    src: https://galaxy.ansible.com
-  - name: ansible.posix
-    src: https://galaxy.ansible.com

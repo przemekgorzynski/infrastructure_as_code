@@ -71,16 +71,16 @@ variable "vcn_address_space" {
 variable "subnet_cidr_block" {
   type = map(string)
   default = {
-    vcn_mgmnt_subnet = "10.0.1.0/24"
-    vcn_k8s_subnet = "10.0.2.0/24"
+    piholeSubnet = "10.0.1.0/24"
+    testSubnet   = "10.0.2.0/24"
   }
 }
 
 variable "subnet_names" {
   type = map(string)
   default = {
-    subnet_mgmnt = "mgmnt_subnet"
-    subnet_k8s = "k8s_subnet"
+    piholeSubnet = "pihole_subnet"
+    testSubnet = "test_subnet"
   }
 }
 

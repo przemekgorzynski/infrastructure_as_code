@@ -1,6 +1,0 @@
----
-cidr_network_url: https://projectcalico.docs.tigera.io/manifests/calico.yaml
-config_dir: k8s_config
-control_plane_endpoint_ip: "{{ hostvars['k8s-master'].ansible_default_ipv4.address }}"
-service_cidr: "10.96.0.0/12"
-pod_network_cidr: "10.244.0.0/16"

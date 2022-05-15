@@ -1,4 +1,0 @@
----
-- name: Apt cache
-  apt:
-    update_cache: true
