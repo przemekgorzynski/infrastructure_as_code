@@ -12,6 +12,7 @@ module "pihole_compute"{
     subnet                  = module.pihole_subnet.subnet_data.id
     dns_label               = "pihole-vm"
     image_id                = var.pihole_image_id
+    user_data_base64        = filebase64("${path.module}/cloud-init.yaml")
 }
 
 module "monitoring_compute"{
@@ -28,4 +29,5 @@ module "monitoring_compute"{
     subnet                  = module.monitoring_subnet.subnet_data.id
     dns_label               = "monitoring-vm"
     image_id                = var.monitoring_image_id
+    user_data_base64        = filebase64("${path.module}/cloud-init.yaml")
 }
