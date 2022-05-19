@@ -40,3 +40,12 @@ module "monitoring_subnet" {
     subnet_name                 = var.subnet_names.monitoringSubnet
     dns_label                   = "monitoring"
 }
+
+module "k3s_subnet" {
+    source                      = "./modules/subnets"
+    compartment_id              = var.compartment_id
+    subnet_cidr_block           = var.subnet_cidr_block.k3sSubnet
+    oci_core_vcn                = oci_core_vcn.vcn.id
+    subnet_name                 = var.subnet_names.k3sSubnet
+    dns_label                   = "k3s"
+}

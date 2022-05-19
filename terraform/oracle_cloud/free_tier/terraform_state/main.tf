@@ -17,3 +17,11 @@ output "pihole_compute_data" {
 output "monitoring_compute_data" {
   value = module.monitoring_compute.compute_data.public_ip
 }
+
+output "k3s_master_compute_data" {
+  value = module.k3s_master_compute.compute_data.public_ip
+}
+
+output "k3s_worker1_compute_data" {
+  value = module.k3s_worker1_compute.compute_data.public_ip
+}
