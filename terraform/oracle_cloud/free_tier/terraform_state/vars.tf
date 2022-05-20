@@ -7,8 +7,12 @@ variable "private_key_path"                 {}
 #GENERAL
 variable "compartment_id"                   { default = "ocid1.tenancy.oc1..aaaaaaaai6pwlqfxlt2bw7jw5uti2hf2jnwmaxr6wdyrap3q7pqxbjn4bvwa" }
 variable "region"                           { default = "eu-frankfurt-1" }
-variable "availability_domain"              { default = "WHWJ:EU-FRANKFURT-1-AD-2" }
-variable "fault_domain"                     { default = "FAULT-DOMAIN-2" }
+variable "availability_domain1"             { default = "WHWJ:EU-FRANKFURT-1-AD-1" }
+variable "availability_domain2"             { default = "WHWJ:EU-FRANKFURT-1-AD-2" }
+variable "availability_domain3"             { default = "WHWJ:EU-FRANKFURT-1-AD-3" }
+variable "fault_domain1"                    { default = "FAULT-DOMAIN-1" } 
+variable "fault_domain2"                    { default = "FAULT-DOMAIN-2" }
+variable "fault_domain3"                    { default = "FAULT-DOMAIN-3" }
 variable "local_public_key_path"            { default = "~/.ssh/id_rsa.pub" }
 variable "volume_device"                    { default = "/dev/oracleoci/oraclevdb" }
 
@@ -62,7 +66,7 @@ variable "k3s_master_private_ip"            { default = "10.0.2.100" }
 #https://docs.oracle.com/en-us/iaas/images/ - images #Ubuntu20
 variable "k3s_image_id"                     { default = "ocid1.image.oc1.eu-frankfurt-1.aaaaaaaafofmp3otdb5fh3ged2zhsepoh3e2dkaus636uee4vpt7jrgqssma" }
 
-#K3S-WORKER
+#K3S-WORKERS
 variable "k3s_worker1_hostname"             { default = "k3s-worker1-vm" }
 variable "k3s_worker2_hostname"             { default = "k3s-worker2-vm" }
 variable "k3s_worker_shape"                 { default = "VM.Standard.A1.Flex" }
@@ -75,6 +79,14 @@ variable "k3s_worker2_private_ip"           { default = "10.0.2.102" }
 variable "k3s_block_display_name"           { default = "k3s-block-volume" }
 variable "k3s_block_volume_size_in_gbs"     { default = "50" }
 variable "k3s_block_volume_vpus_per_gb"     { default = "10" }
+#0: Represents Lower Cost option.
+#10: Represents Balanced option.
+#20: Represents Higher Performance option.
+
+#PIHOLE BLOCK VOLUME
+variable "pihole_block_display_name"        { default = "pihole-block-volume" }
+variable "pihole_block_volume_size_in_gbs"  { default = "50" }
+variable "pihole_block_volume_vpus_per_gb"  { default = "10" }
 #0: Represents Lower Cost option.
 #10: Represents Balanced option.
 #20: Represents Higher Performance option.
