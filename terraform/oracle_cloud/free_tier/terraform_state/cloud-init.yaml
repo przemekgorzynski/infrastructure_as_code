@@ -15,3 +15,9 @@ users:
       - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDN2bZBqmM8+JyqyqnckJ/fdyeFpPiuN6Qsj7dGPM6TkGv4tupx5EmZ7LdE2EGNv/N9hI+3onqPACTH4t/i4YeoeU49NrHHRFL5RpyvHas/7sSe5s8sdtX9cFwrZ0r8H8hP8SYHpne04JqNHhq9vpi1+25hb5w2GlICrzC0jmX/CsfqhrY3EdGg+x0Db/nGlYjFLbu1MWAT5VXbvV6HEx6SdJC4w/GEp7mZD+6z1qMTlR1g09lPJbpd8ckN2w8/wn+bJaxQhLSCNB08mezpC/0pn7M7RprA6mfr7cJ3jdG30IPNFOQYe2u3on1cgXngcBWxw7mq4zGa4LM+aG6+oFKad1Ws19cL6kOecp9UIq4tcS1m1cTdMtWvKmvLg6GxcDNXO/Li3Q6EDYxk3lGLAVPuGRxOMTLWkrCaIex5io0Z7PpcJLg5AlBPIlGQhqc4b7lqbbUR3kY19koTD/gqc8dWeXKjK3/cHrxLMsRxYxY5ynpkZX2ChasfA9/YCCF0I6E= przemek@t440s
 
 package_upgrade: true
+
+bootcmd:
+  - echo 10.0.1.100 pihole >> /etc/hosts
+  - echo 10.0.2.100 k3s-master >> /etc/hosts
+  - echo 10.0.2.101 k3s-worker1 >> /etc/hosts
+  - echo 10.0.2.102 k3s-worker2 >> /etc/hosts

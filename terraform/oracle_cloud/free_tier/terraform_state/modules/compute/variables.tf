@@ -11,3 +11,4 @@ variable "dns_label"                { type = string }
 variable "subnet"                   { type = string }
 variable "image_id"                 { type = string }
 variable "user_data_base64"         { type = string }
+variable "nsg_ids"                  { type = list   }

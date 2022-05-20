@@ -14,14 +14,14 @@ output "pihole_compute_data" {
   value = module.pihole_compute.compute_data.public_ip
 }
 
-output "monitoring_compute_data" {
-  value = module.monitoring_compute.compute_data.public_ip
-}
-
-output "k3s_master_compute_data" {
+output "k3s_master_public_ip" {
   value = module.k3s_master_compute.compute_data.public_ip
 }
 
-output "k3s_worker1_compute_data" {
+output "k3s_worker1_public_ip" {
   value = module.k3s_worker1_compute.compute_data.public_ip
 }
+
+#output "k3s_worker2_public_ip" {
+#  value = module.k3s_worker2_compute.compute_data.public_ip
+#}

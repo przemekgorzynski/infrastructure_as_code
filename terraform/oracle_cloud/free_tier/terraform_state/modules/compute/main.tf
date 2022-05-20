@@ -23,7 +23,7 @@ resource "oci_core_instance" "compute" {
         display_name                        = var.vnic_name
         hostname_label                      = var.dns_label
         subnet_id                           = var.subnet
-#        nsg_ids = [oci_core_network_security_group.k8s_nsg.id]
+        nsg_ids                             = var.nsg_ids           
     }
 
     launch_options {
