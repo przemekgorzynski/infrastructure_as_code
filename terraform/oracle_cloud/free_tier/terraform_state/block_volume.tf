@@ -3,7 +3,7 @@ resource "oci_core_volume" "k3s_block_volume" {
     compartment_id          = var.compartment_id
 
     #Optional
-    availability_domain     = var.availability_domain
+    availability_domain     = var.availability_domain2
     display_name            = var.k3s_block_display_name
     is_auto_tune_enabled    = true
     size_in_gbs             = var.k3s_block_volume_size_in_gbs
@@ -27,7 +27,7 @@ resource "oci_core_volume" "pihole_block_volume" {
     compartment_id          = var.compartment_id
 
     #Optional
-    availability_domain     = var.availability_domain
+    availability_domain     = var.availability_domain2
     display_name            = var.pihole_block_display_name
     is_auto_tune_enabled    = true
     size_in_gbs             = var.pihole_block_volume_size_in_gbs
