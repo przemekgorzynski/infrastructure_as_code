@@ -37,7 +37,7 @@ variables:
 
 stages:
   - stage: Terraform
-    pool: ubuntu
+    pool: Azure Pipelines
     jobs:
       - job: Init
         steps:
