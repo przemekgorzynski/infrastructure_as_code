@@ -39,7 +39,7 @@ stages:
   - stage: Terraform
     pool: Azure Pipelines
     jobs:
-      - job: Init
+      - job: Terraform
         steps:
           - template: steps/init.yaml
             parameters:
@@ -53,8 +53,6 @@ stages:
               ServicePrincipalID: ${{ variables.ServicePrincipalID }}
               ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
               Tenant: ${{ variables.Tenant }}
-      - job: Apply
-        steps:
           - ${{ if eq(parameters.apply, true) }}:
             - template: steps/apply.yaml
               parameters:
@@ -62,8 +60,6 @@ stages:
                 ServicePrincipalID: ${{ variables.ServicePrincipalID }}
                 ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
                 Tenant: ${{ variables.Tenant }}
-      - job: Destroy
-        steps:
           - ${{ if eq(parameters.destroy, true) }}:
             - template: steps/destroy.yaml
               parameters:
