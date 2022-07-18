@@ -1,0 +1,73 @@
+name: $(Build.Repository.Name) - $(Build.SourceBranchName)
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - README.md
+
+pool:
+  name: ubuntu
+  demands:
+  - agent.os -equals ubuntu-latest
+
+parameters:
+  - name: apply
+    default: false
+    type: boolean
+  - name: destroy
+    default: false
+    type: boolean
+
+variables:
+  - name: TargetSubscriptionID
+    readonly: true
+    value: 
+  - name: ServicePrincipalID
+    readonly: true
+    value: 
+  - name: ServicePrincipalKey   #Add variable during pipeline creation
+    readonly: true
+    value: $(SP_KEY)
+  - name: Tenant
+    readonly: true
+    value: 
+
+stages:
+  - stage: Terraform
+    pool: ubuntu
+    jobs:
+      - job: Init
+        steps:
+          - template: steps/init.yaml
+            parameters:
+              TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+              ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+              ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+              Tenant: ${{ variables.Tenant }}
+          - template: steps/plan.yaml
+            parameters:
+              TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+              ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+              ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+              Tenant: ${{ variables.Tenant }}
+      - job: Apply
+        steps:
+          - ${{ if eq(parameters.apply, true) }}:
+            - template: steps/apply.yaml
+              parameters:
+                TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+                ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+                ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+                Tenant: ${{ variables.Tenant }}
+      - job: Destroy
+        steps:
+          - ${{ if eq(parameters.destroy, true) }}:
+            - template: steps/destroy.yaml
+              parameters:
+                TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+                ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+                ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+                Tenant: ${{ variables.Tenant }}
