@@ -8,18 +8,15 @@ trigger:
     exclude:
       - README.md
 
-pool:
-  name: ubuntu
-  demands:
-  - agent.os -equals ubuntu-latest
-
 parameters:
-  - name: apply
-    default: false
-    type: boolean
-  - name: destroy
-    default: false
-    type: boolean
+  - name: Action
+    displayName: Action
+    type: string
+    default: 'Plan'
+    values:
+    - Plan
+    - Apply
+    - Destroy
 
 variables:
   - name: TargetSubscriptionID
@@ -28,7 +25,7 @@ variables:
   - name: ServicePrincipalID
     readonly: true
     value: 
-  - name: ServicePrincipalKey   #Add variable during pipeline creation
+  - name: ServicePrincipalKey
     readonly: true
     value: $(SP_KEY)
   - name: Tenant
@@ -36,10 +33,12 @@ variables:
     value: 
 
 stages:
-  - stage: Terraform
+  - stage: Plan
+    condition: ne('${{ parameters.Action }}', 'Destroy')
+    dependsOn: []
     pool: Azure Pipelines
     jobs:
-      - job: Terraform
+      - job: Plan
         steps:
           - template: steps/init.yaml
             parameters:
@@ -53,14 +52,40 @@ stages:
               ServicePrincipalID: ${{ variables.ServicePrincipalID }}
               ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
               Tenant: ${{ variables.Tenant }}
-          - ${{ if eq(parameters.apply, true) }}:
+  - stage: Apply
+    condition: contains('${{ parameters.Action }}', 'Apply')
+    dependsOn: Plan
+    pool: Azure Pipelines
+    jobs:
+      - job: Apply
+        steps:
+          - template: steps/init.yaml
+            parameters:
+              TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+              ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+              ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+              Tenant: ${{ variables.Tenant }}
+          - ${{ if eq(parameters.Action, 'Apply') }}:
             - template: steps/apply.yaml
               parameters:
                 TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
                 ServicePrincipalID: ${{ variables.ServicePrincipalID }}
                 ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
                 Tenant: ${{ variables.Tenant }}
-          - ${{ if eq(parameters.destroy, true) }}:
+  - stage: Destroy
+    condition: contains('${{ parameters.Action }}', 'Destroy')
+    dependsOn: []
+    pool: Azure Pipelines
+    jobs:
+      - job: Destory
+        steps:
+          - template: steps/init.yaml
+            parameters:
+              TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
+              ServicePrincipalID: ${{ variables.ServicePrincipalID }}
+              ServicePrincipalKey: ${{ variables.ServicePrincipalKey }}
+              Tenant: ${{ variables.Tenant }}
+          - ${{ if eq(parameters.Action, 'Destroy') }}:
             - template: steps/destroy.yaml
               parameters:
                 TargetSubscriptionID: ${{ variables.TargetSubscriptionID }}
