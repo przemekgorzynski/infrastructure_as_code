@@ -1,0 +1,16 @@
+parameters:
+  - name: ServiceConnection
+    type: string
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Terraform tfsec'
+  inputs:
+    azureSubscription: ${{parameters.ServiceConnection}}
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    addSpnToEnvironment: true
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+      tfsec .
