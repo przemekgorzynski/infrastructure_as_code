@@ -14,3 +14,30 @@ steps:
     inlineScript: |
       curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
       tfsec .
+- task: AzureCLI@2
+  displayName: 'Terraform validate'
+  inputs:
+    azureSubscription: ${{parameters.ServiceConnection}}
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    addSpnToEnvironment: true
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      terraform init -backend=false
+      terraform validate
+- task: AzureCLI@2
+  displayName: 'Checkov'
+  inputs:
+    azureSubscription: ${{parameters.ServiceConnection}}
+    workingDirectory: '$(System.DefaultWorkingDirectory)/terraform'
+    addSpnToEnvironment: true
+    scriptType: bash
+    scriptLocation: inlineScript
+    inlineScript: |
+      FILE=~/.local/bin/checkov
+      if [ -f "$FILE" ]; then
+        echo "$FILE exists, no need of installation."
+      else
+        pip3 install --upgrade pip && pip3 install --upgrade setuptools certifi checkov requests
+      fi
+      ~/.local/bin/checkov -d . --framework terraform --download-external-modules true
